@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<menu name="主菜单">
+<menu name="课件1" url="">
+	<menu name="课件1_1" url="">
+		<menu name="课件1_1_1" url=""></menu>
+	</menu>
+</menu>
+<menu name="课件2" url="">
+	<menu name="课件2_1" url="">
+		<menu name="课件2_1_1" url=""></menu>
+	</menu>
+</menu>
+</menu>
