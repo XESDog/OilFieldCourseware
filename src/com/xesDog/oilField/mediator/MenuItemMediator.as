@@ -32,18 +32,32 @@ package com.xesDog.oilField.mediator
 		{
 			super.onRegister();
 			viewComponent.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			viewComponent.addEventListener(MouseEvent.ROLL_OVER, onMouseRollOver);
+			viewComponent.addEventListener(MouseEvent.ROLL_OUT, onMouseRollOut);
+		}
+		
+		private function onMouseRollOut(e:MouseEvent):void 
+		{
+			//sendNotification(EventConst.OPERATE_MENU_ROLLOUT, _menuNode);
+		}
+		
+		private function onMouseRollOver(e:MouseEvent):void 
+		{
+			sendNotification(EventConst.OPERATE_MENU_ROLLOVER, _menuNode);
 		}
 		
 		override public function onRemove():void 
 		{
 			super.onRemove();
 			viewComponent.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			viewComponent.removeEventListener(MouseEvent.ROLL_OVER, onMouseRollOver);
+			viewComponent.removeEventListener(MouseEvent.ROLL_OUT, onMouseRollOut);
 		}
 		/* private function */
 		private function onMouseDown(e:MouseEvent):void 
 		{
 			trace("点击:" + _menuNode.val.name);
-			sendNotification(EventConst.OPERATE_MENU_CLICK, _menuNode);
+			sendNotification(EventConst.OPERATE_MENU_PRESS, _menuNode);
 
 		}
 	}

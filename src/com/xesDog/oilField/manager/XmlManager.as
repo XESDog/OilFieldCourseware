@@ -53,7 +53,7 @@ package com.xesDog.oilField.manager
 		static public const MENU_XML_PARSED:String = "menu_Xml_Parsed";
 		
 		public static const MAIN_MENU_X:int = 20;
-		public static const MAIN_MENU_Y:int = 500;
+		public static const MAIN_MENU_Y:int = 560;
 		
 		/* public function */
 		/**
@@ -98,6 +98,10 @@ package com.xesDog.oilField.manager
 			nodeVo= new MenuNodeVo();
 			nodeVo.name = xml.@name;
 			nodeVo.url = xml.@url;
+			
+			var size:int = xml.@size;
+			if (size) nodeVo.size = size;
+			
 			node.val = nodeVo;
 			
 			//设定子的值

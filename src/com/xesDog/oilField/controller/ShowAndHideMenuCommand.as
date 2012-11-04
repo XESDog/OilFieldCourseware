@@ -1,63 +1,50 @@
-package com.xesDog.oilField.controller
+package com.xesDog.oilField.controller 
 {
 	
-	import com.xesDog.oilField.ApplicationFacad;
-	import com.xesDog.oilField.mediator.AppMediator;
 	import com.xesDog.oilField.mediator.MenuListMediator;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
 	import com.xesDog.oilField.ui.UIMenuList;
 	import flash.display.DisplayObject;
-	import flash.display.DisplayObjectContainer;
-	import flash.display.Sprite;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
-	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	/**
-	 * @describe  	菜单被点击
+	 * @describe  	显示，还是隐藏菜单
 	 * @author  	zihua.zheng
 	 * @website 	http://blog.sina.com.cn/zihua2007
-	 * @time		2012-10-27 17:02
+	 * @time		2012-11-4 20:40
 	 */
-	public class MenuClickCommand extends SimpleCommand
+	public class ShowAndHideMenuCommand extends SimpleCommand
 	{
 		
-		public function MenuClickCommand()
+		public function ShowAndHideMenuCommand() 
 		{
 			super();
+			
+			
 		}
-		
 		/* public function */
 		
 		/* override function */
-		override public function execute(notification:INotification):void
+		override public function execute(notification:INotification):void 
 		{
 			super.execute(notification);
-			
 			var node:MenuNode = notification.getBody() as MenuNode;
-			
-			if (node.isLeaf())
-				return; //叶节点没有后续菜单
-			
 			var menuProxy:MenuProxy = facade.retrieveProxy(MenuProxy.NAME) as MenuProxy;
-			var currNode:MenuNode = menuProxy.currentNode;
-			//检测和最近点击的按钮是不是同一个
-			if (checkIsSameNode(node))
-			{
-				if (menuInStage(node))
-				{
+			var currNode:MenuNode = menuProxy.currentRollOverNode;
+			var depthReduce:int = getDepthReduce(node, currNode);
+			
+			//主菜单，在前面已经做了排除，只有通过点击才能执行到这步
+			if (menuProxy.isMainMenu(node)) {
+				if (menuInStage(node)) {
 					removeMenuList(node);
-				}
-				else
-				{
+				}else {
 					addMenuList(node);
 				}
 			}
-			//点击的不是同一个按钮
-			else
-			{
-				var depthReduce:int = getDepthReduce(node, currNode);
+			//非主菜单，通过鼠标滑动来判读显示还是隐藏
+			else{
 				if (depthReduce < 0)
 				{
 					var num:int = depthReduce;
@@ -78,21 +65,10 @@ package com.xesDog.oilField.controller
 				{
 					addMenuList(node);
 				}
+				menuProxy.currentRollOverNode = node;
 			}
-			menuProxy.currentNode = node;
 		}
-		
-		/* private function */ /**
-		 * 检测和最近一次点击的按钮是不是同一个
-		 * @param	node
-		 * @return
-		 */
-		private function checkIsSameNode(node:MenuNode):Boolean
-		{
-			var menuProxy:MenuProxy = facade.retrieveProxy(MenuProxy.NAME) as MenuProxy;
-			return node == menuProxy.currentNode;
-		}
-		
+		/* private function */
 		/**
 		 * 获取当前显示的node和当前点击node的深度差值
 		 * @param nodeA	当前显示node
@@ -146,10 +122,10 @@ package com.xesDog.oilField.controller
 			var listMediator:MenuListMediator = getListMediatorByNode(node);
 			var parentMediator:MenuListMediator = getListMediatorByNode(node.parent as MenuNode);
 			var menuProxy:MenuProxy = facade.retrieveProxy(MenuProxy.NAME) as MenuProxy;
-			
-			(parentMediator.getViewComponent() as UIMenuList).addSonList(listMediator.getViewComponent() as UIMenuList,menuProxy.isMainMenu(node));
+			var numInParent:int = menuProxy.numInParent(node);
+			(parentMediator.getViewComponent() as UIMenuList).addSonList(listMediator.getViewComponent() as UIMenuList, menuProxy.isMainMenu(node),numInParent);
 		
 		}
 	}
-
+	
 }

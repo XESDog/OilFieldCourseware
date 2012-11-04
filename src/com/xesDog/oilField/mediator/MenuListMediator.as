@@ -5,6 +5,7 @@ package com.xesDog.oilField.mediator
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.ui.UIMenu;
 	import com.xesDog.oilField.ui.UIMenuList;
+	import flash.events.MouseEvent;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
@@ -46,26 +47,32 @@ package com.xesDog.oilField.mediator
 		override public function onRegister():void 
 		{
 			super.onRegister();
+			viewComponent.addEventListener(MouseEvent.ROLL_OUT, onRollOut);
 		}
 		override public function onRemove():void 
 		{
 			super.onRemove();
+			viewComponent.removeEventListener(MouseEvent.ROLL_OUT, onRollOut);
 		}
+		
 		override public function listNotificationInterests():Array 
 		{
-			return [EventConst.OPERATE_MENU_CLICK];
+			return [EventConst.OPERATE_MENU_ROLLOVER];
 		}
 		override public function handleNotification(notification:INotification):void 
 		{
 			super.handleNotification(notification);
 			switch(notification.getName()) {
-				case EventConst.OPERATE_MENU_CLICK:
+				case EventConst.OPERATE_MENU_ROLLOVER:
 					
 				break;
 			}
 		}
 		/* private function */
-
+		private function onRollOut(e:MouseEvent):void 
+		{
+			sendNotification(EventConst.OPERATE_MENU_ROLLOUT, _menuNode);
+		}
 	}
 	
 }

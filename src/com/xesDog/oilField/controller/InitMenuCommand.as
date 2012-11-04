@@ -31,7 +31,7 @@ package com.xesDog.oilField.controller
 			var uiMenu:UIMenu = new UIMenu();//主菜单
 			var menuProxy:MenuProxy = facade.retrieveProxy(MenuProxy.NAME) as MenuProxy;
 			var mainMenuNode:MenuNode = node.getFirstChild() as MenuNode;
-			menuProxy.currentNode = node;
+			menuProxy.currentRollOverNode = node;
 			uiMenu.setMenuName(node.getFirstChild().val.name);
 			facade.registerMediator(new MenuListMediator(node, MenuListMediator.NAME + node.key, uiMenuList));
 			facade.registerMediator(new MenuItemMediator(mainMenuNode, MenuItemMediator.NAME + node.key, uiMenu));
@@ -54,11 +54,6 @@ package com.xesDog.oilField.controller
 			var uiMenu:UIMenu;
 			var num:int = 0;//list编号
 			facade.registerMediator(new MenuListMediator(node, MenuListMediator.NAME + node.key, uiMenuList));
-			/*if (container) {
-				container.addSonList(uiMenuList);
-				uiMenuList.x = count * 10;
-				uiMenuList.y = count * 10;
-			}*/
 			node = node.getFirstChild() as MenuNode;
 			while (node) 
 			{

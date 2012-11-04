@@ -2,10 +2,11 @@ package com.xesDog.oilField.ui
 {
 	
 	import com.bit101.components.VBox;
+	import com.greensock.TweenLite;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import gs.TweenLite;
+	import flash.geom.Point;
 	
 	/**
 	 * @describe  	...
@@ -83,7 +84,7 @@ package com.xesDog.oilField.ui
 		 * @param	sonList
 		 * @param	isMainMenu	主菜单被点击
 		 */
-		public function addSonList(sonList:UIMenuList,isMainMenu:Boolean):void {
+		public function addSonList(sonList:UIMenuList,isMainMenu:Boolean,numInParent:int):void {
 			removeSonList();
 			_sonListContainer.addChild(sonList);
 			sonList.alpha = 0;
@@ -92,10 +93,17 @@ package com.xesDog.oilField.ui
 			//TODO:后去需要在这里作修改，改为随父级的宽度变换
 			if (isMainMenu) {
 				_sonListContainer.x = 0;
-				_sonListContainer.y = -sonList.height;
+				_sonListContainer.y = -sonList.height-20;
 			}else {
 				_sonListContainer.x = 100;
-				_sonListContainer.y = 0;	
+				var startY:int = numInParent * (20 + _menuVbox.spacing);
+				_sonListContainer.y = startY;
+				var globalY:int = _sonListContainer.localToGlobal(new Point(0,0)).y;
+				var dValue:int =  globalY+ _sonListContainer.height - stage.stageHeight;
+				if(dValue>0){
+					_sonListContainer.y -= dValue;
+				}else {
+				}
 			}
 		}
 		/**

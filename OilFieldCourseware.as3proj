@@ -53,7 +53,7 @@
     <element path="libs\ds_debug.swc" />
     <element path="libs\MinimalComps_cn.swc" />
     <element path="libs\PureMVC_AS3_2_0_4.swc" />
-    <element path="libs\TweenLite_Max_Group.swc" />
+    <element path="libs\greensock.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

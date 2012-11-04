@@ -12,9 +12,13 @@ package com.xesDog.oilField.model
 	public class MenuProxy extends Proxy
 	{
 		/**
-		 * 最后一次点击的按钮对应的node
+		 * 当前鼠标移上的node
 		 */
-		public var currentNode:MenuNode;
+		public var currentRollOverNode:MenuNode;
+		/**
+		 * 当前点击的node
+		 */
+		public var currentPressNode:MenuNode;
 		
 		public static const NAME:String = "menu_proxy";
 		public function MenuProxy(proxyName:String=null, data:Object=null) 
@@ -29,6 +33,26 @@ package com.xesDog.oilField.model
 		 */
 		public function isMainMenu(node:MenuNode):Boolean {
 			return MenuNode(data).getFirstChild() == node;
+		}
+		/**
+		 * 在父级中是第几个孩子
+		 * @param	node
+		 * @return
+		 */
+		public function numInParent(node:MenuNode):int {
+			if (node.parent == null) throw new Error("没有父节点");
+			var tempNode:MenuNode = node.parent.getFirstChild() as MenuNode;
+			var num:int=0;
+			while (tempNode) 
+			{
+				if (tempNode == node) {
+					return num;
+				}
+				num++;
+				tempNode = tempNode.next as MenuNode;
+			}
+			
+			return -1;
 		}
 		/* override function */
 		

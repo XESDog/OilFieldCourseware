@@ -17,12 +17,11 @@ package com.xesDog.oilField.model
 		 * 菜单项连接
 		 */
 		public var url:String = "";
+		/**
+		 * 预估大小
+		 */
+		public var size:int = 0;
 		
-		public function MenuNodeVo() 
-		{
-			
-			
-		}
 		/* public function */
 		
 		/* override function */

@@ -10,7 +10,25 @@ package com.xesDog.oilField.events
 	public class EventConst
 	{
 		//对菜单的操作以operate打头
-		public static const OPERATE_MENU_CLICK:String = "operate_menu_click";
+		public static const OPERATE_MENU_ROLLOVER:String = "operate_menu_rollOver";
+		//鼠标移走
+		static public const OPERATE_MENU_ROLLOUT:String = "operate_MenuRoll_out";
+		//鼠标按下
+		static public const OPERATE_MENU_PRESS:String = "operate_Menu_Press";
+		//读取swf
+		public static const SYS_LOAD_SWF:String = "sys_load_swf";
+		//读取movie
+		public static const SYS_LOAD_VIDEO:String = "sys_load_video";
+		//进度
+		public static const SYS_PROGRESS:String = "sys_progress";
+		//读取完成
+		public static const SYS_LOADED:String = "sys_loaded";
+		//出错
+		static public const SYS_ERROR:String = "sys_sError";
+		//控制菜单的隐藏和显示
+		static public const OPERATER_SHOWANDHIDE_MENU:String = "operater_Showa_nd_hide_Menu";
+		
+		
 	}
 	
 }
