@@ -24,12 +24,28 @@ package com.xesDog.oilField.mediator
 			_menuNode = menuNode;
 		}
 		/* public function */
-		
+		/**
+		 * 在舞台上
+		 */
+		public function get inStage():Boolean {
+			return viewComponent.stage != null;
+		}
+		/**
+		 * 添加到舞台
+		 */
+		public function addToStage():void {
+			
+		}
+		/**
+		 * 移除出舞台
+		 */
+		public function removeToStage():void {
+			
+		}
 		/* override function */
 		override public function onRegister():void 
 		{
 			super.onRegister();
-			//addMenu();
 		}
 		override public function onRemove():void 
 		{

@@ -22,7 +22,14 @@ package com.xesDog.oilField.model
 			super(proxyName, data);
 		}
 		/* public function */
-		
+		/**
+		 * 该节点是主菜单
+		 * @param	node
+		 * @return
+		 */
+		public function isMainMenu(node:MenuNode):Boolean {
+			return MenuNode(data).getFirstChild() == node;
+		}
 		/* override function */
 		
 		/* private function */

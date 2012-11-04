@@ -2,8 +2,10 @@ package com.xesDog.oilField.ui
 {
 	
 	import com.bit101.components.VBox;
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import gs.TweenLite;
 	
 	/**
 	 * @describe  	...
@@ -32,9 +34,10 @@ package com.xesDog.oilField.ui
 		
 		public function UIMenuList() 
 		{
-			_menuVbox = new VBox(this, 0, 0);
+			_menuVbox = new VBox();
+			super.addChild(_menuVbox);
 			_sonListContainer = new Sprite();
-			addChild(_sonListContainer);
+			super.addChild(_sonListContainer);
 			this.addEventListener(Event.ADDED_TO_STAGE, onAddStage);
 		}
 		
@@ -45,6 +48,11 @@ package com.xesDog.oilField.ui
 		public function addMenu(uiMenu:UIMenu):void {
 			_menuVbox.addChild(uiMenu);
 			_width = width > _width?width:_width;
+		}
+		override public function addChild(child:DisplayObject):flash.display.DisplayObject 
+		{
+			throw new Error("请使用addMenu。");
+			return super.addChild(child);
 		}
 		//public function 
 		/**
@@ -73,11 +81,22 @@ package com.xesDog.oilField.ui
 		/**
 		 * 添加子菜单项
 		 * @param	sonList
+		 * @param	isMainMenu	主菜单被点击
 		 */
-		public function addSonList(sonList:UIMenuList):void {
+		public function addSonList(sonList:UIMenuList,isMainMenu:Boolean):void {
+			removeSonList();
 			_sonListContainer.addChild(sonList);
+			sonList.alpha = 0;
+			TweenLite.to(sonList, .5,{alpha:1});
 			_sonList = sonList;
-			_sonListContainer.x = _width;
+			//TODO:后去需要在这里作修改，改为随父级的宽度变换
+			if (isMainMenu) {
+				_sonListContainer.x = 0;
+				_sonListContainer.y = -sonList.height;
+			}else {
+				_sonListContainer.x = 100;
+				_sonListContainer.y = 0;	
+			}
 		}
 		/**
 		 * 移除子菜单list

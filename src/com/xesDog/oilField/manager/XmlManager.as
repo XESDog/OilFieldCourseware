@@ -52,6 +52,9 @@ package com.xesDog.oilField.manager
 		public static const MENU_XML_URL:String = "../assets/menu.xml";
 		static public const MENU_XML_PARSED:String = "menu_Xml_Parsed";
 		
+		public static const MAIN_MENU_X:int = 20;
+		public static const MAIN_MENU_Y:int = 500;
+		
 		/* public function */
 		/**
 		 * 读取menuXml文件
@@ -72,8 +75,13 @@ package com.xesDog.oilField.manager
 		 * @return
 		 */
 		private function parseMenuXml(xml:XML):void {
+			//菜单根节点
 			_menuNode = new MenuNode();
-			menuXmlIteration(_menuNode,xml);
+			
+			//主菜单
+			var mainMenu:MenuNode = new MenuNode();
+			_menuNode.appendNode(mainMenu);
+			menuXmlIteration(mainMenu,xml);
 		}
 		/**
 		 * 迭代取值

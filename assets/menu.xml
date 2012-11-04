@@ -10,4 +10,7 @@
 		<menu name="课件2_1_1" url=""></menu>
 	</menu>
 </menu>
+<menu name="课件3">
+	<menu name="课件3_1"></menu>
+</menu>
 </menu>

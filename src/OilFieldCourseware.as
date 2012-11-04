@@ -3,6 +3,8 @@ package
 	import com.xesDog.oilField.ApplicationFacad;
 	import com.xesDog.oilField.manager.XmlManager;
 	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	
 	/**
@@ -17,6 +19,9 @@ package
 	{
 		public function OilFieldCourseware()
 		{
+			stage.align = StageAlign.TOP_LEFT;
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+			
 			XmlManager.instance.loadMenuXml(XmlManager.MENU_XML_URL);
 			XmlManager.instance.dispatcher.addEventListener(XmlManager.MENU_XML_PARSED,onMenuXmlParsed);
 			

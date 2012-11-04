@@ -4,7 +4,7 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.controller.MenuClickCommand;
 	import com.xesDog.oilField.events.EventConst;
 	import com.xesDog.oilField.manager.XmlManager;
-	import com.xesDog.oilField.mediator.MenuMediator;
+	import com.xesDog.oilField.mediator.AppMediator;
 	import com.xesDog.oilField.model.MenuProxy;
 	import flash.display.DisplayObjectContainer;
 	import org.puremvc.as3.patterns.facade.Facade;
@@ -72,7 +72,7 @@ package com.xesDog.oilField
 		/* public function */
 		public function setUp(contextView:DisplayObjectContainer):void {
 			this._contextView = contextView;
-			registerMediator(new MenuMediator(MenuMediator.NAME, _contextView));
+			registerMediator(new AppMediator(AppMediator.NAME, _contextView));
 			sendNotification(MVC_OVER,contextView);
 		}
 		/* private function */
