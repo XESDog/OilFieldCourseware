@@ -36,7 +36,7 @@ package com.xesDog.oilField.controller
 				if (parseUrlExpandedName(node.val.url) == "swf") {
 					sendNotification(EventConst.SYS_LOAD_SWF, node);
 				}else {
-					
+					sendNotification(EventConst.SYS_LOAD_VIDEO, node);
 				}
 				menuProxy.currentPressNode = node;
 			}

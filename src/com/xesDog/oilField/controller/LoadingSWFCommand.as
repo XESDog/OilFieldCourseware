@@ -51,7 +51,7 @@ package com.xesDog.oilField.controller
 			
 			loaderProxy.currentLoader = queue;
 		}
-		
+		/* private function */
 		private function errorHandler(e:LoaderEvent):void 
 		{
 			trace("error occured with " + e.target + ": " + e.text);
@@ -72,7 +72,7 @@ package com.xesDog.oilField.controller
 			trace("progress: " + e.target.progress);
 			sendNotification(EventConst.SYS_PROGRESS,e.target.progress);
 		}
-		/* private function */
+		
 	}
 	
 }

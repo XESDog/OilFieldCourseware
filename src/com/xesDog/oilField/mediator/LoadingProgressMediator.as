@@ -53,7 +53,7 @@ package com.xesDog.oilField.mediator
 					viewComponent.addChild(_progressBar);
 				break;
 				case EventConst.SYS_PROGRESS:
-					setProgress(notification.getBody() as Number);
+					setProgress((notification.getBody() as Number)*100);
 				break;
 				case EventConst.SYS_LOADED:
 					viewComponent.removeChild(_progressBar);

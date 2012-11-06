@@ -7,7 +7,7 @@
 </menu>
 <menu name="课件2" url="">
 	<menu name="课件2_1" url="">
-		<menu name="课件2_1_1" url="../assets/swf/test2.swf" size="4096"></menu>
+		<menu name="课件2_1_1" url="../assets/video/test.mp4" size="827392"></menu>
 	</menu>
 </menu>
 <menu name="课件3">

@@ -14,7 +14,6 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuProxy;
-	import de.polygonal.core.fmt.Sprintf;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	import org.puremvc.as3.patterns.facade.Facade;
