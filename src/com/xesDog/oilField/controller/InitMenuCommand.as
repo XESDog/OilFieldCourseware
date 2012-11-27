@@ -1,6 +1,7 @@
 package com.xesDog.oilField.controller 
 {
 	
+	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.manager.XmlManager;
 	import com.xesDog.oilField.mediator.MenuItemMediator;
 	import com.xesDog.oilField.mediator.MenuListMediator;
@@ -39,9 +40,12 @@ package com.xesDog.oilField.controller
 			
 			var appRoot:Sprite = facade.retrieveMediator(AppMediator.NAME).getViewComponent() as Sprite;
 			initMenuByNode(node, 0, uiMenuList);
+			
+			//主菜单添加到舞台
 			appRoot.addChild(uiMenuList);
-			uiMenuList.x = XmlManager.MAIN_MENU_X;
-			uiMenuList.y = XmlManager.MAIN_MENU_Y;
+			uiMenuList.percentX = .05;
+			uiMenuList.percentY = .9;
+			ResizeManager.instance.addResizeObj(uiMenuList);
 		}
 		/**
 		 * 根据node初始化菜单

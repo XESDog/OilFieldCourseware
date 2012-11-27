@@ -1,6 +1,7 @@
 package
 {
 	import com.xesDog.oilField.ApplicationFacad;
+	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.manager.XmlManager;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
@@ -23,8 +24,9 @@ package
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			
 			XmlManager.instance.loadMenuXml(XmlManager.MENU_XML_URL);
-			XmlManager.instance.dispatcher.addEventListener(XmlManager.MENU_XML_PARSED,onMenuXmlParsed);
+			XmlManager.instance.dispatcher.addEventListener(XmlManager.MENU_XML_PARSED, onMenuXmlParsed);
 			
+			ResizeManager.instance.init(this);
 		}
 		/**
 		 * xml解析完毕

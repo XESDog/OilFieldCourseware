@@ -4,6 +4,7 @@ package com.xesDog.oilField.ui
 	import com.bit101.components.VBox;
 	import com.greensock.TweenLite;
 	import flash.display.DisplayObject;
+	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.geom.Point;
@@ -14,7 +15,7 @@ package com.xesDog.oilField.ui
 	 * @website 	http://blog.sina.com.cn/zihua2007
 	 * @time		2012-10-27 17:09
 	 */
-	public class UIMenuList extends Sprite
+	public dynamic class UIMenuList extends MovieClip
 	{
 		/**
 		 * 菜单项的容器
@@ -114,6 +115,14 @@ package com.xesDog.oilField.ui
 			_sonListContainer.removeChild(_sonList);
 			_sonList = null;
 		}
+		
+		/* INTERFACE com.xesDog.oilField.core.IResize */
+		
+		public function onResize():void 
+		{
+			trace("UImenuList resize.");
+		}
+		
 	}
 	
 }

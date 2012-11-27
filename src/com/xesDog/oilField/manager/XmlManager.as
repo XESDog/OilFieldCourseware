@@ -52,9 +52,6 @@ package com.xesDog.oilField.manager
 		public static const MENU_XML_URL:String = "../assets/menu.xml";
 		static public const MENU_XML_PARSED:String = "menu_Xml_Parsed";
 		
-		public static const MAIN_MENU_X:int = 20;
-		public static const MAIN_MENU_Y:int = 560;
-		
 		/* public function */
 		/**
 		 * 读取menuXml文件

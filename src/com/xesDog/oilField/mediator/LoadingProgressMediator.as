@@ -3,7 +3,7 @@ package com.xesDog.oilField.mediator
 	
 	import com.bit101.components.ProgressBar;
 	import com.xesDog.oilField.events.EventConst;
-	import flash.display.Sprite;
+	import flash.display.MovieClip;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
@@ -20,7 +20,8 @@ package com.xesDog.oilField.mediator
 		public function LoadingProgressMediator(mediatorName:String=null, viewComponent:Object=null) 
 		{
 			super(mediatorName, viewComponent);
-			_progressBar = new ProgressBar(viewComponent as Sprite);
+			_progressBar = new ProgressBar(viewComponent as MovieClip);
+			_progressBar.maximum = 100;
 			_progressBar.x = -_progressBar.width >> 1;
 			_progressBar.y = -_progressBar.height >> 1;
 			viewComponent.removeChild(_progressBar);

@@ -8,6 +8,7 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.controller.MenuRollOverCommand;
 	import com.xesDog.oilField.controller.ShowAndHideMenuCommand;
 	import com.xesDog.oilField.events.EventConst;
+	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.manager.XmlManager;
 	import com.xesDog.oilField.mediator.AppMediator;
 	import com.xesDog.oilField.mediator.LoadingProgressMediator;
@@ -15,7 +16,7 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuProxy;
 	import flash.display.DisplayObjectContainer;
-	import flash.display.Sprite;
+	import flash.display.MovieClip;
 	import org.puremvc.as3.patterns.facade.Facade;
 	
 	
@@ -85,21 +86,24 @@ package com.xesDog.oilField
 		override protected function initializeView():void 
 		{
 			super.initializeView();
-			registerMediator(new MediaContainerMediator(MediaContainerMediator.NAME,new Sprite()));
-			registerMediator(new LoadingProgressMediator(LoadingProgressMediator.NAME,new Sprite()));
+			registerMediator(new MediaContainerMediator(MediaContainerMediator.NAME,new MovieClip()));
+			registerMediator(new LoadingProgressMediator(LoadingProgressMediator.NAME,new MovieClip()));
 		}
 		/* public function */
 		public function setUp(contextView:DisplayObjectContainer):void {
 			this._contextView = contextView;
 			//媒体容器
-			var mediaContainer:Sprite = retrieveMediator(MediaContainerMediator.NAME).getViewComponent() as Sprite;
+			var mediaContainer:MovieClip = retrieveMediator(MediaContainerMediator.NAME).getViewComponent() as MovieClip;
+			ResizeManager.instance.addResizeObj(mediaContainer);
+			
 			this._contextView.addChild(mediaContainer);
 			
 			//进度条
-			var progressContainer:Sprite = retrieveMediator(LoadingProgressMediator.NAME).getViewComponent() as Sprite;
+			var progressContainer:MovieClip = retrieveMediator(LoadingProgressMediator.NAME).getViewComponent() as MovieClip;
 			this._contextView.addChild(progressContainer);
-			progressContainer.x = _contextView.stage.stageWidth >> 1;
-			progressContainer.y = _contextView.stage.stageHeight >> 1;
+			progressContainer.percentX = .5;
+			progressContainer.percentY = .5;
+			ResizeManager.instance.addResizeObj(progressContainer);
 			
 			registerMediator(new AppMediator(AppMediator.NAME, _contextView));
 			sendNotification(MVC_OVER,contextView);

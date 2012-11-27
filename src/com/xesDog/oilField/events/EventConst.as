@@ -9,7 +9,7 @@ package com.xesDog.oilField.events
 	 */
 	public class EventConst
 	{
-		//对菜单的操作以operate打头
+		//鼠标移上
 		public static const OPERATE_MENU_ROLLOVER:String = "operate_menu_rollOver";
 		//鼠标移走
 		static public const OPERATE_MENU_ROLLOUT:String = "operate_MenuRoll_out";
@@ -26,9 +26,7 @@ package com.xesDog.oilField.events
 		//出错
 		static public const SYS_ERROR:String = "sys_sError";
 		//控制菜单的隐藏和显示
-		static public const OPERATER_SHOWANDHIDE_MENU:String = "operater_Showa_nd_hide_Menu";
-		
-		
+		static public const OPERATER_SHOWANDHIDE_MENU:String = "operater_Show_and_hide_Menu";
 	}
 	
 }
