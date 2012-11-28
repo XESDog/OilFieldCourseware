@@ -4,6 +4,7 @@ package com.xesDog.oilField.mediator
 	import com.bit101.components.ProgressBar;
 	import com.xesDog.oilField.events.EventConst;
 	import flash.display.MovieClip;
+	import flash.events.Event;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
@@ -20,11 +21,15 @@ package com.xesDog.oilField.mediator
 		public function LoadingProgressMediator(mediatorName:String=null, viewComponent:Object=null) 
 		{
 			super(mediatorName, viewComponent);
-			_progressBar = new ProgressBar(viewComponent as MovieClip);
+			_progressBar = new ProgressBar();
 			_progressBar.maximum = 100;
-			_progressBar.x = -_progressBar.width >> 1;
-			_progressBar.y = -_progressBar.height >> 1;
-			viewComponent.removeChild(_progressBar);
+			_progressBar.y = -_progressBar.height;
+			
+			viewComponent.percentY = 1;
+			viewComponent.onResize = function(e:Event=null):void {
+				_progressBar.width = viewComponent.stage.stageWidth;
+			}
+			viewComponent.offsetY = -_progressBar.height;
 		}
 		/* public function */
 		public function setProgress(rate:Number):void {

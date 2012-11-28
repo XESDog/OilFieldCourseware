@@ -1,5 +1,6 @@
 package
 {
+	import com.bit101.components.Style;
 	import com.xesDog.oilField.ApplicationFacad;
 	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.manager.XmlManager;
@@ -27,6 +28,9 @@ package
 			XmlManager.instance.dispatcher.addEventListener(XmlManager.MENU_XML_PARSED, onMenuXmlParsed);
 			
 			ResizeManager.instance.init(this);
+			
+			//ui样式
+			Style.setStyle(Style.DARK);
 		}
 		/**
 		 * xml解析完毕

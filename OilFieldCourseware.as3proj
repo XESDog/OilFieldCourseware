@@ -11,7 +11,7 @@
     <movie version="11" />
     <movie minorVersion="5" />
     <movie platform="Flash Player" />
-    <movie background="#FFFFFF" />
+    <movie background="#222222" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
@@ -55,6 +55,8 @@
     <element path="libs\PureMVC_AS3_2_0_4.swc" />
     <element path="libs\greensock.swc" />
     <element path="libs\Fl_component.swc" />
+    <element path="libs\ComponentAsset.swc" />
+    <element path="libs\MonsterDebugger.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

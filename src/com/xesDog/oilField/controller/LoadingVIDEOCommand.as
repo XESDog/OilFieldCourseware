@@ -10,7 +10,6 @@ package com.xesDog.oilField.controller
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuNode;
-	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
@@ -39,12 +38,11 @@ package com.xesDog.oilField.controller
 			var loaderProxy:LoaderProxy = facade.retrieveProxy(LoaderProxy.NAME) as LoaderProxy;
 			var size:int = node.val.size;
 			
-			loaderProxy.unLoad();
 			
 			_mediaName = "video" + node.key;
 			
 			var mediaContainer:Sprite = facade.retrieveMediator(MediaContainerMediator.NAME).getViewComponent() as Sprite;
-			queue.append(new VideoLoader(node.val.url, { name:_mediaName,width:mediaContainer.stage.stageWidth,height:mediaContainer.stage.stageHeight, estimatedBytes:size, container:mediaContainer, autoPlay:false,scaleMode:"proportionalInside",volume:0} ));
+			queue.append(new VideoLoader(node.val.url, { name:_mediaName,width:mediaContainer.stage.stageWidth,height:mediaContainer.stage.stageHeight, estimatedBytes:size,bufferTime:10, container:mediaContainer, autoPlay:true,scaleMode:"proportionalInside",volume:0} ));
 			queue.load();
 			
 			loaderProxy.currentLoader = queue;
@@ -63,8 +61,9 @@ package com.xesDog.oilField.controller
 			var video:VideoLoader = videoContainer.loader as VideoLoader;
 			video.playVideo();
 			videoContainer.alpha = 0;
+			//videoContainer.scaleX = videoContainer.scaleY = .8;
 			TweenLite.to(video, 2, {volume:1} );
-			TweenLite.to(videoContainer, .5, {alpha:1} );
+			TweenLite.to(videoContainer, .5, {alpha:1,scaleX:1,scaleY:1} );
 			sendNotification(EventConst.SYS_LOADED);
 		}
 		

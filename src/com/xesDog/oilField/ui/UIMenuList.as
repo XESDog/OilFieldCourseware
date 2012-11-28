@@ -97,7 +97,7 @@ package com.xesDog.oilField.ui
 				_sonListContainer.y = -sonList.height-20;
 			}else {
 				_sonListContainer.x = 100;
-				var startY:int = numInParent * (20 + _menuVbox.spacing);
+				var startY:int = numInParent * (30 + _menuVbox.spacing);
 				_sonListContainer.y = startY;
 				var globalY:int = _sonListContainer.localToGlobal(new Point(0,0)).y;
 				var dValue:int =  globalY+ _sonListContainer.height - stage.stageHeight;
@@ -120,7 +120,6 @@ package com.xesDog.oilField.ui
 		
 		public function onResize():void 
 		{
-			trace("UImenuList resize.");
 		}
 		
 	}

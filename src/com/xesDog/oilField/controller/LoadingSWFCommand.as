@@ -38,10 +38,8 @@ package com.xesDog.oilField.controller
 			super.execute(notification);
 			var queue:LoaderMax = new LoaderMax( { name:"mainQueue", onProgress:progressHandler, onComplete:completeHandler, onError:errorHandler } );
 			var node:MenuNode = notification.getBody() as MenuNode;
-			var loaderProxy:LoaderProxy = facade.retrieveProxy(LoaderProxy.NAME) as LoaderProxy;
 			var size:int = node.val.size;
-			
-			loaderProxy.unLoad();
+			var loaderProxy:LoaderProxy = facade.retrieveProxy(LoaderProxy.NAME) as LoaderProxy;
 			
 			_swfName = "swf" + node.key;
 			
@@ -63,7 +61,8 @@ package com.xesDog.oilField.controller
 			trace(e.target + " is complete!");
 			var swf:DisplayObject = LoaderMax.getContent(_swfName);
 			swf.alpha = 0;
-			TweenLite.to(swf, .5, { alpha:1 } );
+			//swf.scaleX = swf.scaleY = .8;
+			TweenLite.to(swf, .5, { alpha:1,scaleX:1,scaleY:1 } );
 			sendNotification(EventConst.SYS_LOADED);
 		}
 		

@@ -21,8 +21,6 @@ package com.xesDog.oilField.controller
 		public function ShowAndHideMenuCommand() 
 		{
 			super();
-			
-			
 		}
 		/* public function */
 		

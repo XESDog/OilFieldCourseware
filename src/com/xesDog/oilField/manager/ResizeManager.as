@@ -82,7 +82,7 @@ package com.xesDog.oilField.manager
 			}
 			DisplayObject(obj).x = obj.percentX * _contextView.stage.stageWidth + obj.offsetX;
 			DisplayObject(obj).y = obj.percentY * _contextView.stage.stageHeight + obj.offsetY;
-			if(obj.onResize)obj.onResize();
+			if(obj.stage&&obj.onResize)obj.onResize();
 		}
 	}
 }

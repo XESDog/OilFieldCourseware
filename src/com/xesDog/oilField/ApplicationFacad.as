@@ -1,6 +1,8 @@
 package com.xesDog.oilField
 {
+	import com.bit101.components.ProgressBar;
 	import com.xesDog.oilField.controller.InitMenuCommand;
+	import com.xesDog.oilField.controller.LoadingColorCommand;
 	import com.xesDog.oilField.controller.LoadingSWFCommand;
 	import com.xesDog.oilField.controller.LoadingVIDEOCommand;
 	import com.xesDog.oilField.controller.MenuPressCommand;
@@ -13,10 +15,13 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.mediator.AppMediator;
 	import com.xesDog.oilField.mediator.LoadingProgressMediator;
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
+	import com.xesDog.oilField.mediator.VideoControlBarMediator;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuProxy;
+	import com.xesDog.oilField.ui.UIVideoControlBar;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
+	import flash.events.Event;
 	import org.puremvc.as3.patterns.facade.Facade;
 	
 	
@@ -81,13 +86,15 @@ package com.xesDog.oilField
 			registerCommand(EventConst.OPERATE_MENU_ROLLOUT, MenuRollOutCommand);
 			registerCommand(EventConst.SYS_LOAD_SWF, LoadingSWFCommand);
 			registerCommand(EventConst.SYS_LOAD_VIDEO, LoadingVIDEOCommand);
+			registerCommand(EventConst.SYS_COLOR, LoadingColorCommand);
 			registerCommand(EventConst.OPERATER_SHOWANDHIDE_MENU, ShowAndHideMenuCommand);
 		}
 		override protected function initializeView():void 
 		{
 			super.initializeView();
 			registerMediator(new MediaContainerMediator(MediaContainerMediator.NAME,new MovieClip()));
-			registerMediator(new LoadingProgressMediator(LoadingProgressMediator.NAME,new MovieClip()));
+			registerMediator(new LoadingProgressMediator(LoadingProgressMediator.NAME, new MovieClip()));
+			registerMediator(new VideoControlBarMediator(VideoControlBarMediator.NAME, new UIVideoControlBar()));
 		}
 		/* public function */
 		public function setUp(contextView:DisplayObjectContainer):void {
@@ -95,15 +102,18 @@ package com.xesDog.oilField
 			//媒体容器
 			var mediaContainer:MovieClip = retrieveMediator(MediaContainerMediator.NAME).getViewComponent() as MovieClip;
 			ResizeManager.instance.addResizeObj(mediaContainer);
-			
 			this._contextView.addChild(mediaContainer);
 			
-			//进度条
-			var progressContainer:MovieClip = retrieveMediator(LoadingProgressMediator.NAME).getViewComponent() as MovieClip;
-			this._contextView.addChild(progressContainer);
-			progressContainer.percentX = .5;
-			progressContainer.percentY = .5;
+			//视频控制条
+			var videoControlBar:UIVideoControlBar = retrieveMediator(VideoControlBarMediator.NAME).getViewComponent() as UIVideoControlBar;
+			ResizeManager.instance.addResizeObj(videoControlBar);
+			this._contextView.addChild(videoControlBar);
+			
+			//进度条容器
+			var loadingProgressMediator:LoadingProgressMediator = retrieveMediator(LoadingProgressMediator.NAME) as LoadingProgressMediator;
+			var progressContainer:MovieClip =loadingProgressMediator.getViewComponent() as MovieClip;
 			ResizeManager.instance.addResizeObj(progressContainer);
+			this._contextView.addChild(progressContainer);
 			
 			registerMediator(new AppMediator(AppMediator.NAME, _contextView));
 			sendNotification(MVC_OVER,contextView);

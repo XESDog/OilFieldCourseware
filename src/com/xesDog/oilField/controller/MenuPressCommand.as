@@ -1,8 +1,11 @@
 package com.xesDog.oilField.controller 
 {
 	import com.xesDog.oilField.events.EventConst;
+	import com.xesDog.oilField.mediator.MediaContainerMediator;
+	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
+	import flash.display.MovieClip;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
@@ -31,12 +34,23 @@ package com.xesDog.oilField.controller
 			if (currentPressNode == node) {
 				return ;
 			}
-			if (node.isLeaf()){
+			
+			if (node.isLeaf()) {
+				//移除现有显示
+				var loaderProxy:LoaderProxy = facade.retrieveProxy(LoaderProxy.NAME) as LoaderProxy;
+				loaderProxy.unLoad();
+				var mediaContainer:MovieClip = facade.retrieveMediator(MediaContainerMediator.NAME) .getViewComponent() as MovieClip;
+				mediaContainer.removeChildren(0);
+				
 				//播放flash，或者视频
 				if (parseUrlExpandedName(node.val.url) == "swf") {
 					sendNotification(EventConst.SYS_LOAD_SWF, node);
-				}else {
+				}else if(parseUrlExpandedName(node.val.url) == "flv" ||
+				parseUrlExpandedName(node.val.url) == "mp4" ||
+				parseUrlExpandedName(node.val.url) == "f4v"){
 					sendNotification(EventConst.SYS_LOAD_VIDEO, node);
+				}else {
+					sendNotification(EventConst.SYS_COLOR,node);
 				}
 				menuProxy.currentPressNode = node;
 			}
