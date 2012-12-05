@@ -1,8 +1,8 @@
 package com.xesDog.oilField
 {
-	import com.bit101.components.ProgressBar;
 	import com.xesDog.oilField.controller.InitMenuCommand;
 	import com.xesDog.oilField.controller.LoadingColorCommand;
+	import com.xesDog.oilField.controller.LoadingIMAGECommand;
 	import com.xesDog.oilField.controller.LoadingSWFCommand;
 	import com.xesDog.oilField.controller.LoadingVIDEOCommand;
 	import com.xesDog.oilField.controller.MenuPressCommand;
@@ -13,6 +13,7 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.manager.XmlManager;
 	import com.xesDog.oilField.mediator.AppMediator;
+	import com.xesDog.oilField.mediator.BigBtnsMediator;
 	import com.xesDog.oilField.mediator.LoadingProgressMediator;
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
 	import com.xesDog.oilField.mediator.VideoControlBarMediator;
@@ -21,7 +22,6 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.ui.UIVideoControlBar;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
-	import flash.events.Event;
 	import org.puremvc.as3.patterns.facade.Facade;
 	
 	
@@ -64,6 +64,7 @@ package com.xesDog.oilField
 		
 		//start-----------------------------------------------------------------------------
 		private var _contextView:DisplayObjectContainer;
+		private var _mainMc:MovieClip;
 		/**
 		 * mvc初始化完毕
 		 */
@@ -86,6 +87,7 @@ package com.xesDog.oilField
 			registerCommand(EventConst.OPERATE_MENU_ROLLOUT, MenuRollOutCommand);
 			registerCommand(EventConst.SYS_LOAD_SWF, LoadingSWFCommand);
 			registerCommand(EventConst.SYS_LOAD_VIDEO, LoadingVIDEOCommand);
+			registerCommand(EventConst.SYS_LOAD_IMAGE, LoadingIMAGECommand);
 			registerCommand(EventConst.SYS_COLOR, LoadingColorCommand);
 			registerCommand(EventConst.OPERATER_SHOWANDHIDE_MENU, ShowAndHideMenuCommand);
 		}
@@ -99,21 +101,27 @@ package com.xesDog.oilField
 		/* public function */
 		public function setUp(contextView:DisplayObjectContainer):void {
 			this._contextView = contextView;
+			_mainMc = _contextView.getChildByName("mainMc") as MovieClip;
+			
+			var bigBtnsMc:MovieClip = _mainMc.bigBtns_mc;
+			registerMediator(new BigBtnsMediator(BigBtnsMediator.NAME, bigBtnsMc));
+			
+			var content_mc:MovieClip = _mainMc.content_mc;
 			//媒体容器
 			var mediaContainer:MovieClip = retrieveMediator(MediaContainerMediator.NAME).getViewComponent() as MovieClip;
+			content_mc.addChild(mediaContainer);
 			ResizeManager.instance.addResizeObj(mediaContainer);
-			this._contextView.addChild(mediaContainer);
 			
 			//视频控制条
 			var videoControlBar:UIVideoControlBar = retrieveMediator(VideoControlBarMediator.NAME).getViewComponent() as UIVideoControlBar;
+			content_mc.addChild(videoControlBar);
 			ResizeManager.instance.addResizeObj(videoControlBar);
-			this._contextView.addChild(videoControlBar);
 			
-			//进度条容器
+			//进度条容器，进度条在所有对象的最上层
 			var loadingProgressMediator:LoadingProgressMediator = retrieveMediator(LoadingProgressMediator.NAME) as LoadingProgressMediator;
 			var progressContainer:MovieClip =loadingProgressMediator.getViewComponent() as MovieClip;
+			_mainMc.addChild(progressContainer);
 			ResizeManager.instance.addResizeObj(progressContainer);
-			this._contextView.addChild(progressContainer);
 			
 			registerMediator(new AppMediator(AppMediator.NAME, _contextView));
 			sendNotification(MVC_OVER,contextView);

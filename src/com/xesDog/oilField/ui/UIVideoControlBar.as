@@ -40,7 +40,12 @@ package com.xesDog.oilField.ui
 		{
 			return _progressSlider;
 		}
-		
+		/**
+		 * 设置进度条的总数
+		 */
+		public function set maximum(value:Number):void {
+			_progressSlider.maximum = value;
+		}
 	}
 
 }

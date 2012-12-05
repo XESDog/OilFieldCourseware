@@ -121,7 +121,7 @@ package com.xesDog.oilField.controller
 			var parentMediator:MenuListMediator = getListMediatorByNode(node.parent as MenuNode);
 			var menuProxy:MenuProxy = facade.retrieveProxy(MenuProxy.NAME) as MenuProxy;
 			var numInParent:int = menuProxy.numInParent(node);
-			(parentMediator.getViewComponent() as UIMenuList).addSonList(listMediator.getViewComponent() as UIMenuList, menuProxy.isMainMenu(node),numInParent);
+			(parentMediator.getViewComponent() as UIMenuList).addSonList(listMediator.getViewComponent() as UIMenuList,numInParent);
 		
 		}
 	}

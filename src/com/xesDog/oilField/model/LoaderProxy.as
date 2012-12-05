@@ -1,8 +1,7 @@
 package com.xesDog.oilField.model 
 {
 	
-	import com.greensock.loading.core.DisplayObjectLoader;
-	import com.greensock.loading.core.LoaderCore;
+	import com.greensock.loading.core.LoaderItem;
 	import org.puremvc.as3.patterns.proxy.Proxy;
 	
 	/**
@@ -13,7 +12,7 @@ package com.xesDog.oilField.model
 	 */
 	public class LoaderProxy extends Proxy
 	{
-		public var currentLoader:LoaderCore;
+		public var currentLoader:LoaderItem;
 		public static const NAME:String = "loader_proxy";
 		public function LoaderProxy(proxyName:String=null, data:Object=null) 
 		{

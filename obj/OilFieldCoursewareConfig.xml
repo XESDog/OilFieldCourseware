@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'2012/11/28'</value>
+      <value>'2012/12/5'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -44,6 +44,7 @@
       <path-element>C:\Users\XRS\Documents\GitHub\OilFieldCourseware\libs\Fl_component.swc</path-element>
       <path-element>C:\Users\XRS\Documents\GitHub\OilFieldCourseware\libs\ComponentAsset.swc</path-element>
       <path-element>C:\Users\XRS\Documents\GitHub\OilFieldCourseware\libs\MonsterDebugger.swc</path-element>
+      <path-element>C:\Users\XRS\Documents\GitHub\OilFieldCourseware\libs\sourceLib.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
@@ -52,7 +53,7 @@
   <default-background-color>#222222</default-background-color>
   <default-frame-rate>30</default-frame-rate>
   <default-size>
-    <width>800</width>
-    <height>600</height>
+    <width>1440</width>
+    <height>900</height>
   </default-size>
 </flex-config>

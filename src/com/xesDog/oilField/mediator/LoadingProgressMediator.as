@@ -3,7 +3,6 @@ package com.xesDog.oilField.mediator
 	
 	import com.bit101.components.ProgressBar;
 	import com.xesDog.oilField.events.EventConst;
-	import flash.display.MovieClip;
 	import flash.events.Event;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
@@ -23,7 +22,6 @@ package com.xesDog.oilField.mediator
 			super(mediatorName, viewComponent);
 			_progressBar = new ProgressBar();
 			_progressBar.maximum = 100;
-			_progressBar.y = -_progressBar.height;
 			
 			viewComponent.percentY = 1;
 			viewComponent.onResize = function(e:Event=null):void {
@@ -46,7 +44,7 @@ package com.xesDog.oilField.mediator
 		}
 		override public function listNotificationInterests():Array 
 		{
-			return [EventConst.SYS_LOAD_SWF,EventConst.SYS_LOAD_VIDEO,EventConst.SYS_PROGRESS,EventConst.SYS_LOADED];
+			return [EventConst.SYS_LOAD_SWF,EventConst.SYS_LOAD_VIDEO,EventConst.SYS_PROGRESS,EventConst.SYS_LOADED,EventConst.SYS_LOAD_IMAGE];
 		}
 		override public function handleNotification(notification:INotification):void 
 		{
@@ -54,13 +52,16 @@ package com.xesDog.oilField.mediator
 			var type:String = notification.getName();
 			switch (type) 
 			{
+				//加载的时候显示进度条
 				case EventConst.SYS_LOAD_SWF:
 				case EventConst.SYS_LOAD_VIDEO:
+				case EventConst.SYS_LOAD_IMAGE:
 					viewComponent.addChild(_progressBar);
 				break;
 				case EventConst.SYS_PROGRESS:
 					setProgress((notification.getBody() as Number)*100);
 				break;
+				//加载完成，进度条消失
 				case EventConst.SYS_LOADED:
 					viewComponent.removeChild(_progressBar);
 				break;

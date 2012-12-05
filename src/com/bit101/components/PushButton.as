@@ -147,6 +147,9 @@ package com.bit101.components
 			{
 				MovieClip(_face).gotoAndStop(2);
 			}
+			if (_over) {
+				MovieClip(_face).gotoAndStop(3);
+			}
 			else
 			{
 				MovieClip(_face).gotoAndStop(1);
@@ -203,6 +206,7 @@ package com.bit101.components
 		protected function onMouseOver(event:MouseEvent):void
 		{
 			_over = true;
+			drawFace();
 			addEventListener(MouseEvent.ROLL_OUT, onMouseOut);
 		}
 		
@@ -213,6 +217,7 @@ package com.bit101.components
 		protected function onMouseOut(event:MouseEvent):void
 		{
 			_over = false;
+			drawFace();
 			if(!_down)
 			{
 /*zheng close		_face.filters = [getShadow(1)];*/

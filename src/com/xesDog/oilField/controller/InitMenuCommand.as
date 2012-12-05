@@ -3,9 +3,9 @@ package com.xesDog.oilField.controller
 	
 	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.manager.XmlManager;
+	import com.xesDog.oilField.mediator.AppMediator;
 	import com.xesDog.oilField.mediator.MenuItemMediator;
 	import com.xesDog.oilField.mediator.MenuListMediator;
-	import com.xesDog.oilField.mediator.AppMediator;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
 	import com.xesDog.oilField.ui.UIMenu;
@@ -39,12 +39,13 @@ package com.xesDog.oilField.controller
 			uiMenuList.addMenu(uiMenu);
 			
 			var appRoot:Sprite = facade.retrieveMediator(AppMediator.NAME).getViewComponent() as Sprite;
-			initMenuByNode(node, 0, uiMenuList);
+			initMenuByNode(node);
 			
 			//主菜单添加到舞台
 			appRoot.addChild(uiMenuList);
-			uiMenuList.percentX = .05;
-			uiMenuList.percentY = .9;
+			uiMenuList.percentX = 0;
+			uiMenuList.percentY = 1;
+			uiMenuList.offsetY = -70;
 			ResizeManager.instance.addResizeObj(uiMenuList);
 		}
 		/**
@@ -52,11 +53,10 @@ package com.xesDog.oilField.controller
 		 * @param	node
 		 * @param	container	
 		 */
-		private function initMenuByNode(node:MenuNode,count:int=0,container:UIMenuList=null):void {
+		private function initMenuByNode(node:MenuNode):void {
 			if (node.numChildren() <= 0) return;
 			var uiMenuList:UIMenuList = new UIMenuList();
 			var uiMenu:UIMenu;
-			var num:int = 0;//list编号
 			facade.registerMediator(new MenuListMediator(node, MenuListMediator.NAME + node.key, uiMenuList));
 			node = node.getFirstChild() as MenuNode;
 			while (node) 
@@ -65,9 +65,8 @@ package com.xesDog.oilField.controller
 				uiMenuList.addMenu(uiMenu);
 				uiMenu.setMenuName(node.val.name);
 				facade.registerMediator(new MenuItemMediator(node, MenuItemMediator.NAME + node.key, uiMenu));
-				initMenuByNode(node,num,uiMenuList);
+				initMenuByNode(node);
 				node = node.next as MenuNode;
-				num++;
 			}	
 		}
 	}

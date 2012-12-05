@@ -42,13 +42,21 @@ package com.xesDog.oilField.controller
 				var mediaContainer:MovieClip = facade.retrieveMediator(MediaContainerMediator.NAME) .getViewComponent() as MovieClip;
 				mediaContainer.removeChildren(0);
 				
-				//播放flash，或者视频
+				//播放flash
 				if (parseUrlExpandedName(node.val.url) == "swf") {
 					sendNotification(EventConst.SYS_LOAD_SWF, node);
-				}else if(parseUrlExpandedName(node.val.url) == "flv" ||
+				}
+				//加载视频
+				else if(parseUrlExpandedName(node.val.url) == "flv" ||
 				parseUrlExpandedName(node.val.url) == "mp4" ||
 				parseUrlExpandedName(node.val.url) == "f4v"){
 					sendNotification(EventConst.SYS_LOAD_VIDEO, node);
+				}
+				//加载图片
+				else if (parseUrlExpandedName(node.val.url) == "jpg" ||
+				parseUrlExpandedName(node.val.url) == "png" ||
+				parseUrlExpandedName(node.val.url) == "gif"){
+					sendNotification(EventConst.SYS_LOAD_IMAGE, node);
 				}else {
 					sendNotification(EventConst.SYS_COLOR,node);
 				}

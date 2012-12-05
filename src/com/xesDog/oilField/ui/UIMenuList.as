@@ -37,6 +37,7 @@ package com.xesDog.oilField.ui
 		public function UIMenuList() 
 		{
 			_menuVbox = new VBox();
+			_menuVbox.spacing = 0;
 			super.addChild(_menuVbox);
 			_sonListContainer = new Sprite();
 			super.addChild(_sonListContainer);
@@ -83,28 +84,23 @@ package com.xesDog.oilField.ui
 		/**
 		 * 添加子菜单项
 		 * @param	sonList
-		 * @param	isMainMenu	主菜单被点击
+		 * @param	numInParent
 		 */
-		public function addSonList(sonList:UIMenuList,isMainMenu:Boolean,numInParent:int):void {
+		public function addSonList(sonList:UIMenuList,numInParent:int):void {
 			removeSonList();
 			_sonListContainer.addChild(sonList);
 			sonList.alpha = 0;
 			TweenLite.to(sonList, .5,{alpha:1});
 			_sonList = sonList;
 			//TODO:后去需要在这里作修改，改为随父级的宽度变换
-			if (isMainMenu) {
-				_sonListContainer.x = 0;
-				_sonListContainer.y = -sonList.height-20;
+			_sonListContainer.x = 100;
+			var startY:int = numInParent * (30 + _menuVbox.spacing);
+			_sonListContainer.y = startY;
+			var globalY:int = _sonListContainer.localToGlobal(new Point(0,0)).y;
+			var dValue:int =  globalY+ _sonListContainer.height - stage.stageHeight;
+			if(dValue>0){
+				_sonListContainer.y -= dValue;
 			}else {
-				_sonListContainer.x = 100;
-				var startY:int = numInParent * (30 + _menuVbox.spacing);
-				_sonListContainer.y = startY;
-				var globalY:int = _sonListContainer.localToGlobal(new Point(0,0)).y;
-				var dValue:int =  globalY+ _sonListContainer.height - stage.stageHeight;
-				if(dValue>0){
-					_sonListContainer.y -= dValue;
-				}else {
-				}
 			}
 		}
 		/**

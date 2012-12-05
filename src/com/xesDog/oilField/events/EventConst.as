@@ -19,6 +19,8 @@ package com.xesDog.oilField.events
 		public static const SYS_LOAD_SWF:String = "sys_load_swf";
 		//读取movie
 		public static const SYS_LOAD_VIDEO:String = "sys_load_video";
+		//图片加载
+		static public const SYS_LOAD_IMAGE:String = "sys_Load_Image";
 		//随便播放个颜色
 		static public const SYS_COLOR:String = "sys_Color";
 		//进度
@@ -29,6 +31,10 @@ package com.xesDog.oilField.events
 		static public const SYS_ERROR:String = "sys_sError";
 		//控制菜单的隐藏和显示
 		static public const OPERATER_SHOWANDHIDE_MENU:String = "operater_Show_and_hide_Menu";
+		
+		//视频初始化
+		static public const SYS_INIT_VIDEO:String = "sysInitVideo";
+		
 		
 	}
 	

@@ -1,5 +1,6 @@
 package com.xesDog.oilField.manager 
 {
+	import com.xesDog.oilField.ApplicationFacad;
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
@@ -57,6 +58,7 @@ package com.xesDog.oilField.manager
 		/* private function */
 		private function onResize(e:Event):void 
 		{
+			ApplicationFacad.instance.sendNotification(Event.RESIZE);
 			for each (var item:MovieClip in _resizes) 
 			{
 				resizeObj(item);
@@ -82,7 +84,8 @@ package com.xesDog.oilField.manager
 			}
 			DisplayObject(obj).x = obj.percentX * _contextView.stage.stageWidth + obj.offsetX;
 			DisplayObject(obj).y = obj.percentY * _contextView.stage.stageHeight + obj.offsetY;
-			if(obj.stage&&obj.onResize)obj.onResize();
+			if(/**obj.stage&& 去掉该判断，避免对象不在舞台，resize事件触发后，
+			再将对象放入舞台，尺寸不正确的问题*/obj.onResize)obj.onResize();
 		}
 	}
 }

@@ -2,7 +2,7 @@ package com.xesDog.oilField.controller
 {
 	
 	import com.greensock.events.LoaderEvent;
-	import com.greensock.loading.SWFLoader;
+	import com.greensock.loading.ImageLoader;
 	import com.greensock.TweenLite;
 	import com.xesDog.oilField.events.EventConst;
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
@@ -14,29 +14,35 @@ package com.xesDog.oilField.controller
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
 	/**
-	 * @describe  	读取swf文件
-	 * @author  	zihua.zheng
+	 * @describe  	图片加载
+	 * @author  	Mr.zheng
 	 * @website 	http://blog.sina.com.cn/zihua2007
-	 * @time		2012-11-4 19:42
+	 * @time		2012/11/29 14:49
 	 */
-	public class LoadingSWFCommand extends SimpleCommand
+	public class LoadingIMAGECommand extends SimpleCommand
 	{
+		
+		public function LoadingIMAGECommand() 
+		{
+			super();
+			
+			
+		}
 		/* public function */
 		
 		/* override function */
-		
 		override public function execute(notification:INotification):void 
 		{
 			super.execute(notification);
 			var node:MenuNode = notification.getBody() as MenuNode;
-			var swfContianer:Sprite = facade.retrieveMediator(MediaContainerMediator.NAME).getViewComponent() as Sprite;
-			var swfLoader:SWFLoader = new SWFLoader( node.val.url, {
+			var imageContainer:Sprite = facade.retrieveMediator(MediaContainerMediator.NAME).getViewComponent() as Sprite;
+			var imageLoader:ImageLoader = new ImageLoader( node.val.url, {
 				estimatedBytes:size, 
-				container:swfContianer, 
+				container:imageContainer, 
 				autoPlay:true,
 				scaleMode:"proportionalInside",
-				width:swfContianer.stage.stageWidth,
-				height:swfContianer.stage.stageHeight,
+				width:imageContainer.stage.stageWidth,
+				height:imageContainer.stage.stageHeight,
 				onComplete :completeHandler,
 				onError :errorHandler,
 				onProgress :progressHandler 
@@ -44,8 +50,8 @@ package com.xesDog.oilField.controller
 			var size:int = node.val.size;
 			var loaderProxy:LoaderProxy = facade.retrieveProxy(LoaderProxy.NAME) as LoaderProxy;
 			
-			swfLoader.load();
-			loaderProxy.currentLoader = swfLoader;
+			imageLoader.load();
+			loaderProxy.currentLoader = imageLoader;
 		}
 		/* private function */
 		private function errorHandler(e:LoaderEvent):void 
@@ -57,10 +63,10 @@ package com.xesDog.oilField.controller
 		private function completeHandler(e:LoaderEvent):void 
 		{
 			trace(e.target + " is complete!");
-			var swf:DisplayObject = e.target.content;
-			swf.alpha = 0;
+			var image:DisplayObject = e.target.content;
+			image.alpha = 0;
 			//swf.scaleX = swf.scaleY = .8;
-			TweenLite.to(swf, .5, { alpha:1,scaleX:1,scaleY:1 } );
+			TweenLite.to(image, .5, { alpha:1,scaleX:1,scaleY:1 } );
 			sendNotification(EventConst.SYS_LOADED);
 		}
 		
@@ -69,7 +75,6 @@ package com.xesDog.oilField.controller
 			trace("progress: " + e.target.progress);
 			sendNotification(EventConst.SYS_PROGRESS,e.target.progress);
 		}
-		
 	}
 	
 }
