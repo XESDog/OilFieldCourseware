@@ -32,7 +32,8 @@ package com.xesDog.oilField.model
 		 * @return
 		 */
 		public function isMainMenu(node:MenuNode):Boolean {
-			return MenuNode(data).getFirstChild() == node;
+			//return MenuNode(data).getFirstChild() == node;
+			return node.depth()<=2;
 		}
 		/**
 		 * 在父级中是第几个孩子

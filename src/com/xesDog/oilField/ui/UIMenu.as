@@ -12,10 +12,12 @@ package com.xesDog.oilField.ui
 	 */
 	public class UIMenu extends Sprite
 	{
+		static public const MENU_WIDTH:int = 150;
 		private var _menu:PushButton;
 		public function UIMenu() 
 		{
 			_menu = new PushButton(this, 0, 0, "默认名称");
+			_menu.width = MENU_WIDTH;
 			
 		}
 		/* public function */

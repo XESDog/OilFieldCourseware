@@ -1,6 +1,7 @@
 package com.xesDog.oilField.controller 
 {
 	
+	import com.xesDog.oilField.events.EventConst;
 	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.manager.XmlManager;
 	import com.xesDog.oilField.mediator.AppMediator;
@@ -45,13 +46,13 @@ package com.xesDog.oilField.controller
 			appRoot.addChild(uiMenuList);
 			uiMenuList.percentX = 0;
 			uiMenuList.percentY = 1;
-			uiMenuList.offsetY = -70;
+			uiMenuList.offsetX = -UIMenu.MENU_WIDTH-2;
+			uiMenuList.offsetY = -130;
 			ResizeManager.instance.addResizeObj(uiMenuList);
 		}
 		/**
 		 * 根据node初始化菜单
 		 * @param	node
-		 * @param	container	
 		 */
 		private function initMenuByNode(node:MenuNode):void {
 			if (node.numChildren() <= 0) return;

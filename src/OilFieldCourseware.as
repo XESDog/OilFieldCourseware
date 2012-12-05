@@ -37,6 +37,7 @@ package
 			//放置mainMc
 			var mainMc:MainMc = new MainMc();
 			mainMc.name = "mainMc";
+			mainMc.mouseEnabled = false;
 			this.addChild(mainMc);
 			setAutoPosition(mainMc);
 		}

@@ -1,6 +1,7 @@
 package com.xesDog.oilField.controller 
 {
 	import com.xesDog.oilField.events.EventConst;
+	import com.xesDog.oilField.mediator.BigBtnsMediator;
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuNode;
@@ -36,6 +37,7 @@ package com.xesDog.oilField.controller
 			}
 			
 			if (node.isLeaf()) {
+				clearBigBtns();
 				//移除现有显示
 				var loaderProxy:LoaderProxy = facade.retrieveProxy(LoaderProxy.NAME) as LoaderProxy;
 				loaderProxy.unLoad();
@@ -78,6 +80,15 @@ package com.xesDog.oilField.controller
 			var index:int = url.lastIndexOf(".");
 			expendName = url.slice(index + 1);
 			return expendName;
+		}
+		/**
+		 * 删除页面中心的大按钮
+		 */
+		private function clearBigBtns():void {
+			var bigBtns:MovieClip = facade.retrieveMediator(BigBtnsMediator.NAME).getViewComponent() as MovieClip;
+			if (bigBtns.parent) {
+				bigBtns.parent.removeChild(bigBtns);
+			}
 		}
 	}
 	

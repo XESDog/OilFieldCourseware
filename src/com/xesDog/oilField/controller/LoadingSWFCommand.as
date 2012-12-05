@@ -36,7 +36,7 @@ package com.xesDog.oilField.controller
 				autoPlay:true,
 				scaleMode:"proportionalInside",
 				width:swfContianer.stage.stageWidth,
-				height:swfContianer.stage.stageHeight,
+				height:swfContianer.stage.stageHeight-40,//这里要剪掉bottom_mc的高度
 				onComplete :completeHandler,
 				onError :errorHandler,
 				onProgress :progressHandler 

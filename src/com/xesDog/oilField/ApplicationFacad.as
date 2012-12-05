@@ -18,6 +18,7 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
 	import com.xesDog.oilField.mediator.VideoControlBarMediator;
 	import com.xesDog.oilField.model.LoaderProxy;
+	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
 	import com.xesDog.oilField.ui.UIVideoControlBar;
 	import flash.display.DisplayObjectContainer;
@@ -124,7 +125,11 @@ package com.xesDog.oilField
 			ResizeManager.instance.addResizeObj(progressContainer);
 			
 			registerMediator(new AppMediator(AppMediator.NAME, _contextView));
-			sendNotification(MVC_OVER,contextView);
+			sendNotification(MVC_OVER, contextView);
+			
+			//默认触发一下主菜单的点击，显示二级菜单
+			var node:MenuNode = retrieveProxy(MenuProxy.NAME).getData() as MenuNode;
+			sendNotification(EventConst.OPERATE_MENU_PRESS, node.getFirstChild());
 		}
 		/* private function */
 	}

@@ -65,10 +65,20 @@ package com.xesDog.oilField.mediator
 			else {
 				var menuProxy:MenuProxy = facade.retrieveProxy(MenuProxy.NAME) as MenuProxy;
 				var mainMenu:MenuNode = menuProxy.getData().getFirstChild() as MenuNode;
-				var listMediator:MenuListMediator = facade.retrieveMediator(MenuListMediator.NAME + mainMenu.key) as MenuListMediator
-				if(listMediator.inStage){
-					sendNotification(EventConst.OPERATER_SHOWANDHIDE_MENU, mainMenu );
+				var listMediator:MenuListMediator;
+				var node:MenuNode=mainMenu.getFirstChild() as MenuNode;
+				
+				while (node) {
+					listMediator = facade.retrieveMediator(MenuListMediator.NAME + node.key) as MenuListMediator;
+					if (listMediator == null) {
+						continue;
+					}
+					if(listMediator.inStage){
+						sendNotification(EventConst.OPERATER_SHOWANDHIDE_MENU, node );
+					}
+					node = node.next as MenuNode;
 				}
+				
 			}
 		}
 	}

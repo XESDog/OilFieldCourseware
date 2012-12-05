@@ -2,6 +2,7 @@ package com.xesDog.oilField.mediator
 {
 	
 	import com.greensock.TweenLite;
+	import com.xesDog.oilField.events.EventConst;
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import org.puremvc.as3.interfaces.INotification;
@@ -32,9 +33,12 @@ package com.xesDog.oilField.mediator
 		override public function onRegister():void 
 		{
 			super.onRegister();
+			
+			viewComponent.mouseEnabled = false;
 			_theoryMc = viewComponent.theory_mc;
 			_faultMc = viewComponent.fault_mc;
 			_operateMc = viewComponent.operate_mc;
+			_theoryMc.buttonMode = _faultMc.buttonMode = _operateMc.buttonMode = true;
 			
 			_theoryMc.addEventListener(MouseEvent.ROLL_OUT, onRollOut);
 			_theoryMc.addEventListener(MouseEvent.ROLL_OVER, onRollOver);
@@ -54,11 +58,18 @@ package com.xesDog.oilField.mediator
 		}
 		override public function listNotificationInterests():Array 
 		{
-			return super.listNotificationInterests();
+			return [];
 		}
 		override public function handleNotification(notification:INotification):void 
 		{
 			super.handleNotification(notification);
+			switch (notification.getName()) 
+			{
+				case "":
+					
+				break;
+				default:
+			}
 		}
 		/* private function */
 		private  function onRollOver(e:MouseEvent):void {

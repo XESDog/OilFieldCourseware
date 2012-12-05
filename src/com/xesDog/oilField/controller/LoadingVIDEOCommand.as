@@ -33,9 +33,9 @@ package com.xesDog.oilField.controller
 				autoPlay:false,
 				scaleMode:"proportionalInside",
 				width:mediaContainer.stage.stageWidth,
-				height:mediaContainer.stage.stageHeight,
+				height:mediaContainer.stage.stageHeight-40,//这里要剪掉bottom_mc的高度
 				volume:0, 
-				onInit:function() {
+				onInit:function():void {
 					sendNotification(EventConst.SYS_INIT_VIDEO);
 				},
 				onProgress:progressHandler,

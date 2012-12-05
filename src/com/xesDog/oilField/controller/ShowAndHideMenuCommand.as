@@ -97,7 +97,8 @@ package com.xesDog.oilField.controller
 		 */
 		private function menuInStage(node:MenuNode):Boolean
 		{
-			var viewComponent:DisplayObject = getListMediatorByNode(node).getViewComponent() as DisplayObject;
+			var listMediator:MenuListMediator = getListMediatorByNode(node) as MenuListMediator;
+			var viewComponent:DisplayObject = listMediator.getViewComponent() as DisplayObject;
 			return viewComponent.stage != null;
 		}
 		

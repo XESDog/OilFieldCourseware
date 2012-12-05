@@ -93,11 +93,11 @@ package com.xesDog.oilField.ui
 			TweenLite.to(sonList, .5,{alpha:1});
 			_sonList = sonList;
 			//TODO:后去需要在这里作修改，改为随父级的宽度变换
-			_sonListContainer.x = 100;
+			_sonListContainer.x = UIMenu.MENU_WIDTH;
 			var startY:int = numInParent * (30 + _menuVbox.spacing);
 			_sonListContainer.y = startY;
 			var globalY:int = _sonListContainer.localToGlobal(new Point(0,0)).y;
-			var dValue:int =  globalY+ _sonListContainer.height - stage.stageHeight;
+			var dValue:int =  globalY+ _sonListContainer.height - stage.stageHeight+40;//这里的40为bottom_mc高度
 			if(dValue>0){
 				_sonListContainer.y -= dValue;
 			}else {
