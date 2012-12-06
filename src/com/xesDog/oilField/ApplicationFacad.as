@@ -16,16 +16,16 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.mediator.BigBtnsMediator;
 	import com.xesDog.oilField.mediator.LoadingProgressMediator;
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
+	import com.xesDog.oilField.mediator.SomeMcsMediator;
 	import com.xesDog.oilField.mediator.VideoControlBarMediator;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
+	import com.xesDog.oilField.model.SoundProxy;
 	import com.xesDog.oilField.ui.UIVideoControlBar;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
 	import org.puremvc.as3.patterns.facade.Facade;
-	
-	
 	
 	/**
 	 * 
@@ -77,6 +77,7 @@ package com.xesDog.oilField
 			//注册menuProxy
 			registerProxy(new MenuProxy(MenuProxy.NAME, XmlManager.instance.menuNode));
 			registerProxy(new LoaderProxy(LoaderProxy.NAME));
+			registerProxy(new SoundProxy(SoundProxy.NAME));
 		}
 		override protected function initializeController():void 
 		{
@@ -103,6 +104,9 @@ package com.xesDog.oilField
 		public function setUp(contextView:DisplayObjectContainer):void {
 			this._contextView = contextView;
 			_mainMc = _contextView.getChildByName("mainMc") as MovieClip;
+			
+			//注册散件管理
+			registerMediator(new SomeMcsMediator(SomeMcsMediator.NAME, _mainMc));
 			
 			var bigBtnsMc:MovieClip = _mainMc.bigBtns_mc;
 			registerMediator(new BigBtnsMediator(BigBtnsMediator.NAME, bigBtnsMc));

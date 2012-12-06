@@ -62,6 +62,9 @@ package
 			
 			ResizeManager.instance.addResizeObj(mc.bg_mc);
 			
+			mc.log_mc.visible = false;
+			mc.bigBtns_mc.visible = false;
+			
 			//底部横条
 			mc.bottom_mc.percentX = 0;
 			mc.bottom_mc.percentY = 1;
@@ -84,6 +87,12 @@ package
 			mc.play_mc.offsetX = -262;
 			mc.play_mc.offsetY = -30;
 			ResizeManager.instance.addResizeObj(mc.play_mc);
+			
+			mc.transparentPlay_mc.percentX = 1;
+			mc.transparentPlay_mc.percentY = 1;
+			mc.transparentPlay_mc.offsetX = -262;
+			mc.transparentPlay_mc.offsetY = -30;
+			ResizeManager.instance.addResizeObj(mc.transparentPlay_mc);
 			
 			//声音
 			mc.sound_mc.percentX = 1;

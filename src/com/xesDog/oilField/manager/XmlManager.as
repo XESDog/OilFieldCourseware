@@ -49,7 +49,7 @@ package com.xesDog.oilField.manager
 		private var _urlLoader:URLLoader;
 		private var _dispatcher:EventDispatcher = new EventDispatcher();
 		private var _menuNode:MenuNode;
-		public static const MENU_XML_URL:String = "../assets/menu.xml";
+		public static const MENU_XML_URL:String = "../assets/xml/menu.xml";
 		static public const MENU_XML_PARSED:String = "menu_Xml_Parsed";
 		
 		/* public function */

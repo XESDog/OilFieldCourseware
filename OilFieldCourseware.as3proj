@@ -6,8 +6,8 @@
     <movie input="" />
     <movie path="bin-debug\OilFieldCourseware.swf" />
     <movie fps="30" />
-    <movie width="1440" />
-    <movie height="900" />
+    <movie width="800" />
+    <movie height="600" />
     <movie version="11" />
     <movie minorVersion="5" />
     <movie platform="Flash Player" />

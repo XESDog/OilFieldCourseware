@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<LoaderMax name="soundLoaderMax" load="true">
+		<MP3Loader name="rollover" url="../assets/sound/rollover.mp3" autoPlay="false"></MP3Loader>
+		<MP3Loader name="press" url="../assets/sound/press.mp3"></MP3Loader>
+		<!-- <MP3Loader name="rollout" url="../assets/sound/rollout.mp3"></MP3Loader> -->
+		<MP3Loader name="bg_1" url="../assets/sound/bg_1.mp3" autoPlay="false"></MP3Loader>
+		<!--<MP3Loader name="bg_2" url="../assets/sound/bg_2.mp3"></MP3Loader>-->
+		<!--<MP3Loader name="bg_3" url="../assets/sound/bg_3.mp3"></MP3Loader>-->
+	</LoaderMax>
+</data>

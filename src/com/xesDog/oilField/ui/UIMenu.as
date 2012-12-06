@@ -3,6 +3,7 @@ package com.xesDog.oilField.ui
 	
 	import com.bit101.components.PushButton;
 	import flash.display.Sprite;
+	import flash.events.MouseEvent;
 	
 	/**
 	 * @describe  	...
@@ -18,7 +19,6 @@ package com.xesDog.oilField.ui
 		{
 			_menu = new PushButton(this, 0, 0, "默认名称");
 			_menu.width = MENU_WIDTH;
-			
 		}
 		/* public function */
 		public function setMenuName(name:String):void {
