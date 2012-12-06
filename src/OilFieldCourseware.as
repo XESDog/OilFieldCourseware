@@ -77,7 +77,7 @@ package
 			//版本信息
 			mc.version_mc.percentX = 0;
 			mc.version_mc.percentY = 1;
-			mc.version_mc.offsetX = 20;
+			mc.version_mc.offsetX = 10;
 			mc.version_mc.offsetY = -30;
 			ResizeManager.instance.addResizeObj(mc.version_mc);
 			

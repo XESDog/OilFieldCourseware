@@ -18,20 +18,21 @@ package com.xesDog.oilField.ui
 		/**
 		 * 播放按钮
 		 */
-		private var _playBtn:PushButton;
+		private var _playBtn:VideoPlay;
 		/**
 		 * 控制条
 		 */
 		private var _progressSlider:HSlider;
 		public function UIVideoControlBar() 
 		{
-			_playBtn = new PushButton(this, 0, 0, "play");
-			_playBtn.toggle = true;
-			_progressSlider = new HSlider(this, 100, 0);
+			_playBtn = new VideoPlay();
+			_playBtn.stop();
+			this.addChild(_playBtn);
+			_progressSlider = new HSlider(this, _playBtn.width, 0);
 			_progressSlider .width= 500;
 		}
 		
-		public function get playBtn():PushButton 
+		public function get playBtn():VideoPlay 
 		{
 			return _playBtn;
 		}
@@ -39,6 +40,9 @@ package com.xesDog.oilField.ui
 		public function get progressSlider():HSlider 
 		{
 			return _progressSlider;
+		}
+		public function setSize(w:Number):void {
+			_progressSlider.width = w - _playBtn.width;
 		}
 		/**
 		 * 设置进度条的总数

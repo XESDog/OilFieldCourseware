@@ -1,6 +1,7 @@
 package com.xesDog.oilField.mediator 
 {
 	
+	import com.xesDog.oilField.model.SoundProxy;
 	import com.xueersi.corelibs.uiCore.ICSBtn;
 	import flash.display.MovieClip;
 	import flash.display.Stage;
@@ -31,12 +32,17 @@ package com.xesDog.oilField.mediator
 		override public function onRegister():void 
 		{
 			super.onRegister();
+			
 			_soundMc = viewComponent.sound_mc;
 			_playMc = viewComponent.play_mc;
 			_transparentPlayMc = viewComponent.transparentPlay_mc;
 			_fullScreenMc = viewComponent.fullScreen_mc;
 			_transparentPlayMc.visible = false;
 			_transparentPlayMc.buttonMode = true;
+			
+			
+			//初始化状态是播放
+			_transparentPlayMc.visible = _playMc.selected = !_playMc.selected;
 			
 			_soundMc.addEventListener(MouseEvent.MOUSE_DOWN, onSoundMouseDown);
 			_playMc.addEventListener(MouseEvent.MOUSE_DOWN, onPlayMouseDown);
@@ -75,13 +81,18 @@ package com.xesDog.oilField.mediator
 		}
 		private function onPlayMouseDown(e:MouseEvent):void 
 		{
-			_playMc.selected = !_playMc.selected;
-			_transparentPlayMc.visible = _playMc.selected;
+			pauseSound();
+			
 		}
 		private function onTransparentPlayDown(e:MouseEvent):void 
 		{
-			_playMc.selected = !_playMc.selected;
-			_transparentPlayMc.visible = false;
+			pauseSound();
+		}
+		private function pauseSound():void {
+			_transparentPlayMc.visible = _playMc.selected = !_playMc.selected;
+			
+			var soundProxy:SoundProxy = facade.retrieveProxy(SoundProxy.NAME) as SoundProxy;
+			soundProxy.pauseBgSound();
 		}
 	}
 }

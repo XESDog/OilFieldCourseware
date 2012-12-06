@@ -4,8 +4,10 @@ package com.xesDog.oilField.mediator
 	import com.bit101.components.PushButton;
 	import com.greensock.loading.VideoLoader;
 	import com.xesDog.oilField.events.EventConst;
+	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.ui.UIVideoControlBar;
+	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import org.puremvc.as3.interfaces.INotification;
@@ -27,14 +29,12 @@ package com.xesDog.oilField.mediator
 			super(mediatorName, viewComponent);
 			
 			_loaderProxy = facade.retrieveProxy(LoaderProxy.NAME) as LoaderProxy;
-			//TODO:控制条的定位
-			viewComponent.percentX = .2;
-			viewComponent.percentY = 1;
-			viewComponent.offsetY = -200;
 			viewComponent.visible = false;
-			viewComponent.onResize = function(e:Event=null ):void {
-				
-			}
+			viewComponent.percentX = .5;
+			viewComponent.percentY = 1;
+			viewComponent.offsetX = -270;
+			viewComponent.offsetY = -40-viewComponent.height;
+			ResizeManager.instance.addResizeObj(viewComponent as MovieClip);
 		}
 		/* public function */
 		
@@ -72,32 +72,64 @@ package com.xesDog.oilField.mediator
 					UIVideoControlBar(viewComponent).maximum = _videoLoader.duration;
 					UIVideoControlBar(viewComponent).playBtn.enabled = true;
 					UIVideoControlBar(viewComponent).progressSlider.enabled = true;
+					addEvent();
+					
 				break;
 				default:
 					viewComponent.visible = false;
+					removeEvent();
+					setPlayBtnPlay();
+					_videoLoader.videoTime = 0;
 			}
 		}
 		
+		private function onVideoComplete(e:Event):void 
+		{
+			setPlayBtnPlay();
+			_videoLoader.videoTime = 0;
+		}
+		
 		/* private function */
-		private function onPlayDown(e:MouseEvent):void 
+		private function onPlayDown(e:MouseEvent=null):void 
 		{
 			//var videoLoader:VideoLoader = _loaderProxy.currentLoader;
 			//videoLoader.videoPaused = !videoLoader.videoPaused;
 			//TODO:修改按钮显示
-			var btn:PushButton = e.target as PushButton;
-			if (btn.selected) {//点击暂停，这里特别注意，初始化为selected=true
-				btn.label = "play";
+			var btn:VideoPlay = UIVideoControlBar(viewComponent).playBtn;
+			if (btn.currentFrame == 2) {
+				btn.gotoAndStop(1);
 				_videoLoader.pauseVideo();
 			}else {//点击播放
-				btn.label = "pause";
 				_videoLoader.playVideo();
+				btn.gotoAndStop(2);
 			}
 			trace("当前time:" + _videoLoader.videoTime,"总时间："+_videoLoader.duration);
+		}
+		private function setPlayBtnPlay():void {
+			UIVideoControlBar(viewComponent).playBtn.gotoAndStop(1);
+		}
+		private function setPlayBtnPause():void {
+			UIVideoControlBar(viewComponent).playBtn.gotoAndStop(2);
 		}
 		private function onSliderChanged(e:Event):void 
 		{
 			_videoLoader.gotoVideoTime(e.target.value);
 			trace("slider value:"+e.target.value);
+		}
+		private function addEvent():void {
+			viewComponent.addEventListener(Event.ENTER_FRAME, onEnterFrame);
+			_videoLoader.addEventListener(VideoLoader.VIDEO_COMPLETE, onVideoComplete);
+			_videoLoader.content.addEventListener(MouseEvent.MOUSE_DOWN, onPlayDown);
+		}
+		private function removeEvent():void {
+			viewComponent.removeEventListener(Event.ENTER_FRAME, onEnterFrame);
+			if (_videoLoader)_videoLoader.removeEventListener(VideoLoader.VIDEO_COMPLETE, onVideoComplete);
+			if (_videoLoader)_videoLoader.content.removeEventListener(MouseEvent.MOUSE_DOWN, onPlayDown);
+		}
+		
+		private function onEnterFrame(e:Event):void 
+		{
+			UIVideoControlBar(viewComponent).progressSlider.value = _videoLoader.videoTime;
 		}
 	}
 	
