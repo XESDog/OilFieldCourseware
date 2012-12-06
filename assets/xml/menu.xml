@@ -3,19 +3,19 @@
 	<menu name="菜单1">
 		<menu name="课件1" url="">
 			<menu name="课件1_1" url="">
-				<menu name="课件AAAAAAAAAAAAAAAAAA1_1_1" url="../assets/swf/test.swf" size="4096"></menu>
+				<menu name="课件AAAAAAAAAAAAAAAAAA1_1_1" url="../assets/swf/test.swf"></menu>
 			</menu>
 		</menu>
 		<menu name="课件2" url="">
 			<menu name="课件2_1" url="">
-				<menu name="课件2_1_1" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" size="1701862"></menu>
+				<menu name="课件2_1_1" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv"></menu>
 			</menu>
 		</menu>
 		<menu name="课件3">
-			<menu name="课件3_1" url="../assets/swf/test3.swf" size="4096"></menu>
+			<menu name="课件3_1"></menu>
 		</menu>
 		<menu name="课件4">
-			<menu name="课件4_1" url="../assets/image/Lighthouse.jpg" size="561276"></menu>
+			<menu name="课件4_1" url="../assets/image/Lighthouse.jpg"></menu>
 		</menu>
 		<menu name="课件5">
 			<menu name="课件5_1"></menu>

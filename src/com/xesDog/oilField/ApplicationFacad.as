@@ -18,6 +18,7 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
 	import com.xesDog.oilField.mediator.SomeMcsMediator;
 	import com.xesDog.oilField.mediator.VideoControlBarMediator;
+	import com.xesDog.oilField.model.ConfigProxy;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
@@ -78,6 +79,7 @@ package com.xesDog.oilField
 			registerProxy(new MenuProxy(MenuProxy.NAME, XmlManager.instance.menuNode));
 			registerProxy(new LoaderProxy(LoaderProxy.NAME));
 			registerProxy(new SoundProxy(SoundProxy.NAME));
+			registerProxy(new ConfigProxy(ConfigProxy.NAME));
 		}
 		override protected function initializeController():void 
 		{

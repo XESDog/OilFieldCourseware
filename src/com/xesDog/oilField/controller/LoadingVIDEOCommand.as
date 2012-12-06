@@ -27,7 +27,7 @@ package com.xesDog.oilField.controller
 			var node:MenuNode = notification.getBody() as MenuNode;
 			var mediaContainer:Sprite = facade.retrieveMediator(MediaContainerMediator.NAME).getViewComponent() as Sprite;
 			var videoLoader:VideoLoader = new VideoLoader(node.val.url, { 
-				estimatedBytes:size,
+				//estimatedBytes:size,
 				bufferTime:10, 
 				container:mediaContainer,
 				autoPlay:false,
@@ -65,11 +65,6 @@ package com.xesDog.oilField.controller
 		
 		private function progressHandler(e:LoaderEvent):void 
 		{
-			//trace("progress: " + e.target.progress);
-			
-			trace("e.target.bufferProgress:"+e.target.bufferProgress);
-			trace("e.target.playProgress:"+e.target.playProgress);
-			
 			sendNotification(EventConst.SYS_PROGRESS,e.target.progress);
 		}
 	}

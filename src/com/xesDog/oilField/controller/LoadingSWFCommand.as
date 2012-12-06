@@ -31,7 +31,7 @@ package com.xesDog.oilField.controller
 			var node:MenuNode = notification.getBody() as MenuNode;
 			var swfContianer:Sprite = facade.retrieveMediator(MediaContainerMediator.NAME).getViewComponent() as Sprite;
 			var swfLoader:SWFLoader = new SWFLoader( node.val.url, {
-				estimatedBytes:size, 
+				//estimatedBytes:size, 
 				container:swfContianer, 
 				autoPlay:true,
 				scaleMode:"proportionalInside",
