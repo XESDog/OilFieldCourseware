@@ -1,15 +1,16 @@
 package com.xesDog.oilField.mediator 
 {
 	
-	import com.bit101.components.PushButton;
 	import com.greensock.loading.VideoLoader;
 	import com.xesDog.oilField.events.EventConst;
 	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.ui.UIVideoControlBar;
+	
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
@@ -79,7 +80,7 @@ package com.xesDog.oilField.mediator
 					viewComponent.visible = false;
 					removeEvent();
 					setPlayBtnPlay();
-					_videoLoader.videoTime = 0;
+					if(_videoLoader)_videoLoader.videoTime = 0;
 			}
 		}
 		

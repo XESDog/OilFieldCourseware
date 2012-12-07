@@ -1,15 +1,18 @@
 package com.xesDog.oilField.model 
 {
 	
-	import adobe.utils.ProductManager;
 	import com.greensock.events.LoaderEvent;
-	import com.greensock.loading.data.MP3LoaderVars;
 	import com.greensock.loading.LoaderMax;
 	import com.greensock.loading.MP3Loader;
+	import com.greensock.loading.data.MP3LoaderVars;
+	
 	import flash.events.DataEvent;
 	import flash.events.Event;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
+	
+	import adobe.utils.ProductManager;
+	
 	import org.puremvc.as3.patterns.proxy.Proxy;
 	
 	/**	
@@ -29,6 +32,7 @@ package com.xesDog.oilField.model
 		//播放状态，0为没有播放，1为暂停播放，2为正在播放
 		private var _playState:int = 0;
 		private var _currentBgSound:MP3Loader;//当前背景音乐
+		private var _isLoaded:Boolean=false;
 		
 		public static const TYPE_ORDER:int = 0;
 		public static const TYPE_RANDON:int = 1;
@@ -50,11 +54,13 @@ package com.xesDog.oilField.model
 		}
 		/** public function */
 		public function playPress():void {
+			if(!_isLoaded)return;
 			var soundLoader:MP3Loader = LoaderMax.getLoader(SOUND_PRESS) as MP3Loader;
 			if (soundLoader == null) return;
 			soundLoader.gotoSoundTime(0, true);
 		}
 		public function playRollOver():void {
+			if(!_isLoaded)return;
 			var soundLoader:MP3Loader = LoaderMax.getLoader(SOUND_ORLLOVER) as MP3Loader;
 			if (soundLoader == null) return;
 			soundLoader.gotoSoundTime(0, true);
@@ -204,7 +210,7 @@ package com.xesDog.oilField.model
 		 */
 		private function onComplete(e:LoaderEvent):void 
 		{
-			
+			_isLoaded=true;
 		}
 	}
 

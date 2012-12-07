@@ -104,8 +104,8 @@ package com.xueersi.corelibs.uiCore
 		protected function updateState(state:int):void
 		{
 			setMouseEnabled(this, true);
-			trace("state:"+state);
 			gotoAndStop(state);
+			trace(state);
 			switch (state)
 			{
 				case State_Up:
@@ -122,7 +122,7 @@ package com.xueersi.corelibs.uiCore
 					setMouseEnabled(this,false);
 					break;
 				case State_Selected:
-					//removeListeners();
+					removeListeners();
 					setMouseEnabled(this,false);
 					break;
 			}

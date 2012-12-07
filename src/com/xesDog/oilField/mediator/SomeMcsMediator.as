@@ -82,7 +82,7 @@ package com.xesDog.oilField.mediator
 		private function onPlayMouseDown(e:MouseEvent):void 
 		{
 			pauseSound();
-			
+			e.stopImmediatePropagation();
 		}
 		private function onTransparentPlayDown(e:MouseEvent):void 
 		{

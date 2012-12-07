@@ -42,10 +42,10 @@ package com.xesDog.oilField.controller
 				return;
 			}
 			//主菜单不响应roll事件 ，只对press响应
-			if (menuProxy.isMainMenu(node)) {
+			/*if (menuProxy.isMainMenu(node)) {
 				return;
 			}
-			
+			*/
 			sendNotification(EventConst.OPERATER_SHOWANDHIDE_MENU, node);
 		}
 		

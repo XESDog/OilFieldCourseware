@@ -4,6 +4,7 @@ package
 	import com.xesDog.oilField.ApplicationFacad;
 	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.manager.XmlManager;
+	
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
@@ -32,7 +33,7 @@ package
 			ResizeManager.instance.init(this);
 			
 			//ui样式
-			Style.setStyle(Style.DARK);
+			Style.setStyle(Style.DARK); 
 			
 			//放置mainMc
 			var mainMc:MainMc = new MainMc();
