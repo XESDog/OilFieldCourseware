@@ -82,6 +82,7 @@ package com.xesDog.oilField.model
 		 * 在暂停和播放中间切换
 		 */
 		public function pauseBgSound():void {
+			if (_currentBgSound == null) return;
 			if (_currentBgSound.soundPaused) {
 				_currentBgSound.playSound();
 			}else {

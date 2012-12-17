@@ -34,10 +34,13 @@ package com.xesDog.oilField.ui
 		 */
 		private var _width:int;
 		
-		public function UIMenuList() 
+		private var _space:int=1;
+		
+		public function UIMenuList(space:int) 
 		{
 			_menuVbox = new VBox();
-			_menuVbox.spacing = 0;
+			_space = space;
+			_menuVbox.spacing = _space;
 			super.addChild(_menuVbox);
 			_sonListContainer = new Sprite();
 			super.addChild(_sonListContainer);
@@ -93,7 +96,7 @@ package com.xesDog.oilField.ui
 			TweenLite.to(sonList, .5,{alpha:1});
 			_sonList = sonList;
 			//TODO:后去需要在这里作修改，改为随父级的宽度变换
-			_sonListContainer.x = UIMenu.MENU_WIDTH;
+			_sonListContainer.x = UIMenu.MENU_WIDTH+_space;
 			var startY:int = numInParent * (30 + _menuVbox.spacing);
 			_sonListContainer.y = startY;
 			var globalY:int = _sonListContainer.localToGlobal(new Point(0,0)).y;

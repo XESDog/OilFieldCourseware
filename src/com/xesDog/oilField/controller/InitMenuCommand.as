@@ -7,6 +7,7 @@ package com.xesDog.oilField.controller
 	import com.xesDog.oilField.mediator.AppMediator;
 	import com.xesDog.oilField.mediator.MenuItemMediator;
 	import com.xesDog.oilField.mediator.MenuListMediator;
+	import com.xesDog.oilField.model.ConfigProxy;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
 	import com.xesDog.oilField.ui.UIMenu;
@@ -29,7 +30,8 @@ package com.xesDog.oilField.controller
 		{
 			super.execute(notification);
 			var node:MenuNode = XmlManager.instance.menuNode;//所有菜单根节点
-			var uiMenuList:UIMenuList = new UIMenuList();//主菜单list
+			var configProxy:ConfigProxy = facade.retrieveProxy(ConfigProxy.NAME) as ConfigProxy;
+			var uiMenuList:UIMenuList = new UIMenuList(configProxy.menuSpace);//主菜单list
 			var uiMenu:UIMenu = new UIMenu();//主菜单
 			var menuProxy:MenuProxy = facade.retrieveProxy(MenuProxy.NAME) as MenuProxy;
 			var mainMenuNode:MenuNode = node.getFirstChild() as MenuNode;
@@ -56,7 +58,8 @@ package com.xesDog.oilField.controller
 		 */
 		private function initMenuByNode(node:MenuNode):void {
 			if (node.numChildren() <= 0) return;
-			var uiMenuList:UIMenuList = new UIMenuList();
+			var configProxy:ConfigProxy = facade.retrieveProxy(ConfigProxy.NAME) as ConfigProxy;
+			var uiMenuList:UIMenuList = new UIMenuList(configProxy.menuSpace);
 			var uiMenu:UIMenu;
 			facade.registerMediator(new MenuListMediator(node, MenuListMediator.NAME + node.key, uiMenuList));
 			node = node.getFirstChild() as MenuNode;

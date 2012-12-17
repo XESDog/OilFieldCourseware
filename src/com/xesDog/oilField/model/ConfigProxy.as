@@ -12,11 +12,13 @@ package com.xesDog.oilField.model
 	public class ConfigProxy extends Proxy
 	{
 		static public const NAME:String = "config_proxy";
-		private var _homePage:String;
+		
+		public var homePage:String;
+		public var menuSpace:int;
+		
 		public function ConfigProxy(proxyName:String=null, data:Object=null) 
 		{
 			super(proxyName, data);
-			
 			
 		}
 		/* public function */

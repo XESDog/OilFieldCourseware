@@ -1,11 +1,14 @@
 package com.xesDog.oilField.manager 
 {
+	import com.xesDog.oilField.ApplicationFacad;
+	import com.xesDog.oilField.model.ConfigProxy;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuNodeVo;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
+	import mx.events.Request;
 	/**
 	 * 
 	 * 单例模式类
@@ -46,10 +49,12 @@ package com.xesDog.oilField.manager
 		}
 		
 		//start-----------------------------------------------------------------------------
+		
 		private var _urlLoader:URLLoader;
 		private var _dispatcher:EventDispatcher = new EventDispatcher();
 		private var _menuNode:MenuNode;
 		public static const MENU_XML_URL:String = "../assets/xml/menu.xml";
+		public static const CONFIG_URL:String = "../assets/xml/config.xml";
 		static public const MENU_XML_PARSED:String = "menu_Xml_Parsed";
 		
 		/* public function */
@@ -65,7 +70,19 @@ package com.xesDog.oilField.manager
 		private function onMenuXmlLoaded(e:Event):void 
 		{
 			parseMenuXml(new XML(_urlLoader.data));
+			
+			_urlLoader = new URLLoader(new URLRequest(CONFIG_URL));
+			_urlLoader.addEventListener(Event.COMPLETE,onConfigXmlLoaded);
+		}
+		
+		private function onConfigXmlLoaded(e:Event):void 
+		{
+			var configProxy:ConfigProxy = ApplicationFacad.instance.retrieveProxy(ConfigProxy.NAME) as ConfigProxy;
+			var xml:XML = new XML(_urlLoader.data);
+			configProxy.homePage = xml.homePage;
+			configProxy.menuSpace = xml.menuSpace;
 			_dispatcher.dispatchEvent(new Event(MENU_XML_PARSED));
+			
 		}
 		/**
 		 * 解析menu文件

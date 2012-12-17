@@ -44,7 +44,8 @@ package com.xesDog.oilField.mediator
 		}
 		override public function listNotificationInterests():Array 
 		{
-			return [EventConst.SYS_LOAD_SWF,EventConst.SYS_LOAD_VIDEO,EventConst.SYS_PROGRESS,EventConst.SYS_LOADED,EventConst.SYS_LOAD_IMAGE];
+			return [EventConst.SYS_LOAD_SWF, EventConst.SYS_LOAD_VIDEO, EventConst.SYS_PROGRESS,
+			EventConst.SYS_LOADED,EventConst.SYS_LOAD_IMAGE,EventConst.SYS_COLOR];
 		}
 		override public function handleNotification(notification:INotification):void 
 		{
@@ -63,7 +64,8 @@ package com.xesDog.oilField.mediator
 				break;
 				//加载完成，进度条消失
 				case EventConst.SYS_LOADED:
-					viewComponent.removeChild(_progressBar);
+				case EventConst.SYS_COLOR:
+					if(_progressBar.parent)viewComponent.removeChild(_progressBar);
 				break;
 				default:
 			}

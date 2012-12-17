@@ -1,12 +1,15 @@
 package com.xesDog.oilField.mediator 
 {
 	
+	import com.xesDog.oilField.model.ConfigProxy;
 	import com.xesDog.oilField.model.SoundProxy;
 	import com.xueersi.corelibs.uiCore.ICSBtn;
 	import flash.display.MovieClip;
 	import flash.display.Stage;
 	import flash.display.StageDisplayState;
 	import flash.events.MouseEvent;
+	import flash.net.navigateToURL;
+	import flash.net.URLRequest;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
@@ -22,6 +25,7 @@ package com.xesDog.oilField.mediator
 		private var _playMc:ICSBtn;
 		private var _transparentPlayMc:MovieClip;
 		private var _fullScreenMc:ICSBtn;
+		private var _homeMc:ICSBtn;
 		
 		public static const NAME:String = "somemcs_mediator";
 		public function SomeMcsMediator(mediatorName:String=null, viewComponent:Object=null) 
@@ -37,6 +41,7 @@ package com.xesDog.oilField.mediator
 			_playMc = viewComponent.play_mc;
 			_transparentPlayMc = viewComponent.transparentPlay_mc;
 			_fullScreenMc = viewComponent.fullScreen_mc;
+			_homeMc = viewComponent.home_mc;
 			_transparentPlayMc.visible = false;
 			_transparentPlayMc.buttonMode = true;
 			
@@ -48,6 +53,13 @@ package com.xesDog.oilField.mediator
 			_playMc.addEventListener(MouseEvent.MOUSE_DOWN, onPlayMouseDown);
 			_transparentPlayMc.addEventListener(MouseEvent.MOUSE_DOWN, onTransparentPlayDown);
 			_fullScreenMc.addEventListener(MouseEvent.MOUSE_DOWN, onFullscreenDown);
+			_homeMc.addEventListener(MouseEvent.MOUSE_DOWN, onHomeDown);
+		}
+		
+		private function onHomeDown(e:MouseEvent):void 
+		{
+			var configProxy:ConfigProxy = facade.retrieveProxy(ConfigProxy.NAME) as ConfigProxy;
+			navigateToURL(new URLRequest("http://"+configProxy.homePage));
 		}
 		
 		private function onFullscreenDown(e:MouseEvent):void 
