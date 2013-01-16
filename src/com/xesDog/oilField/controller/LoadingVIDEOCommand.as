@@ -6,7 +6,9 @@ package com.xesDog.oilField.controller
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuNode;
+	
 	import flash.display.Sprite;
+	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
@@ -25,27 +27,35 @@ package com.xesDog.oilField.controller
 		{
 			super.execute(notification);
 			var node:MenuNode = notification.getBody() as MenuNode;
-			var mediaContainer:Sprite = facade.retrieveMediator(MediaContainerMediator.NAME).getViewComponent() as Sprite;
-			var videoLoader:VideoLoader = new VideoLoader(node.val.url, { 
-				//estimatedBytes:size,
-				bufferTime:10, 
-				container:mediaContainer,
-				autoPlay:false,
-				scaleMode:"proportionalInside",
-				width:mediaContainer.stage.stageWidth,
-				height:mediaContainer.stage.stageHeight-40,//这里要剪掉bottom_mc的高度
-				volume:0, 
-				onInit:function():void {
-					sendNotification(EventConst.SYS_INIT_VIDEO);
-				},
-				onProgress:progressHandler,
-				onComplete:completeHandler,
-				onError:errorHandler
-			});
-			var loaderProxy:LoaderProxy = facade.retrieveProxy(LoaderProxy.NAME) as LoaderProxy;
-			var size:int = node.val.size;
+//			var mediaContainer:Sprite = facade.retrieveMediator(MediaContainerMediator.NAME).getViewComponent() as Sprite;
+			var mediaMediator:MediaContainerMediator = facade.retrieveMediator(MediaContainerMediator.NAME) as MediaContainerMediator;
+			var videoLoader:VideoLoader=new VideoLoader(node.val.url);
 			
-			videoLoader.load();
+			mediaMediator.setVideoUrl(node.val.url);
+			mediaMediator.setVideoPos();
+			mediaMediator.video.seek(0);
+			mediaMediator.video.play();
+			
+			//			var videoLoader:VideoLoader = new VideoLoader(node.val.url, { 
+//				//estimatedBytes:size,
+//				bufferTime:10, 
+//				container:mediaContainer,
+//				autoPlay:false,
+//				scaleMode:"proportionalInside",
+//				width:mediaContainer.stage.stageWidth,
+//				height:mediaContainer.stage.stageHeight-40,//这里要剪掉bottom_mc的高度
+//				volume:0, 
+//				onInit:function():void {
+					sendNotification(EventConst.SYS_INIT_VIDEO);
+//				},
+//				onProgress:progressHandler,
+//				onComplete:completeHandler,
+//				onError:errorHandler
+//			});
+			var loaderProxy:LoaderProxy = facade.retrieveProxy(LoaderProxy.NAME) as LoaderProxy;
+//			var size:int = node.val.size;
+//			
+//			videoLoader.load();
 			
 			loaderProxy.currentLoader = videoLoader;
 		}

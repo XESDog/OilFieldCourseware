@@ -1,10 +1,17 @@
 package com.xesDog.oilField.mediator
 {
 	
+	import com.greensock.loading.VideoLoader;
 	import com.greensock.loading.display.ContentDisplay;
+	import com.xesDog.oilField.events.EventConst;
 	import com.xesDog.oilField.model.LoaderProxy;
+	
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.text.engine.BreakOpportunity;
+	
+	import fl.video.FLVPlayback;
+	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
@@ -17,6 +24,7 @@ package com.xesDog.oilField.mediator
 	 */
 	public class MediaContainerMediator extends Mediator
 	{
+		private var _video:FLVPlayback=new FLVPlayback();
 		static public const NAME:String = "mediaContainer_mediator";
 		
 		public function MediaContainerMediator(mediatorName:String = null, viewComponent:Object = null)
@@ -28,6 +36,12 @@ package com.xesDog.oilField.mediator
 		/* public function */
 		
 		/* override function */
+
+		public function get video():FLVPlayback
+		{
+			return _video;
+		}
+
 		override public function onRegister():void
 		{
 			trace("onRegister");
@@ -40,7 +54,7 @@ package com.xesDog.oilField.mediator
 		
 		override public function listNotificationInterests():Array
 		{
-			return [Event.RESIZE];
+			return [Event.RESIZE,EventConst.SYS_INIT_VIDEO];
 		}
 		
 		override public function handleNotification(notification:INotification):void
@@ -50,6 +64,10 @@ package com.xesDog.oilField.mediator
 			{
 				case Event.RESIZE: 
 					onResize();
+					break;
+				case EventConst.SYS_INIT_VIDEO:
+					viewComponent.addChild(video);
+					setVideoPos();
 					break;
 				default: 
 			}
@@ -65,9 +83,15 @@ package com.xesDog.oilField.mediator
 				//swf,video,etc.
 				if (loaderProxy.currentLoader)
 				{
-					var contentDisplay:ContentDisplay = loaderProxy.currentLoader.content;
-					contentDisplay.fitWidth = viewComponent.stage.stageWidth;
-					contentDisplay.fitHeight = viewComponent.stage.stageHeight;
+					//video
+					if(loaderProxy.currentLoader is VideoLoader){
+						setVideoPos();
+					}else{
+						var contentDisplay:ContentDisplay = loaderProxy.currentLoader.content;
+						contentDisplay.fitWidth = viewComponent.stage.stageWidth;
+						contentDisplay.fitHeight = viewComponent.stage.stageHeight;
+					}
+					
 				}
 				//colcor
 				else
@@ -79,6 +103,18 @@ package com.xesDog.oilField.mediator
 			}else {
 				//没有显示对象，不做处理
 			}
+		}
+		
+		public function setVideoUrl(url:String):void{
+			_video.source=url;
+			_video.skin="MinimaFlatCustomColorPlayBackSeekCounterVolMute.swf";
+		}
+		public function unLoadVideo():void{
+			_video.stop();
+		}
+		public function setVideoPos():void{
+			_video.x=viewComponent.stage.stageWidth-_video.width>>1;
+			_video.y=viewComponent.stage.stageHeight-_video.height-40>>1;
 		}
 	}
 

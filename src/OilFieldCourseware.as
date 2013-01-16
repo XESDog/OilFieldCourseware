@@ -63,8 +63,8 @@ package
 			
 			ResizeManager.instance.addResizeObj(mc.bg_mc);
 			
-			mc.log_mc.visible = false;
-			mc.bigBtns_mc.visible = false;
+//			mc.log_mc.visible = false;
+//			mc.bigBtns_mc.visible = false;
 			
 			//底部横条
 			mc.bottom_mc.percentX = 0;

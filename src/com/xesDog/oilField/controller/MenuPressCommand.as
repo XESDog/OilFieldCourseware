@@ -1,12 +1,15 @@
 package com.xesDog.oilField.controller 
 {
+	import com.greensock.loading.VideoLoader;
 	import com.xesDog.oilField.events.EventConst;
 	import com.xesDog.oilField.mediator.BigBtnsMediator;
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
+	
 	import flash.display.MovieClip;
+	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
@@ -41,6 +44,14 @@ package com.xesDog.oilField.controller
 				//移除现有显示
 				var loaderProxy:LoaderProxy = facade.retrieveProxy(LoaderProxy.NAME) as LoaderProxy;
 				loaderProxy.unLoad();
+				
+				//视频的处理
+				if(loaderProxy.currentLoader is VideoLoader){
+					var mediaMediator:MediaContainerMediator=facade.retrieveMediator(MediaContainerMediator.NAME) as MediaContainerMediator;
+					mediaMediator.unLoadVideo();
+				}
+				
+				
 				var mediaContainer:MovieClip = facade.retrieveMediator(MediaContainerMediator.NAME) .getViewComponent() as MovieClip;
 				mediaContainer.removeChildren(0);
 				

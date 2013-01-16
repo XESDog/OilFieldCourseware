@@ -100,7 +100,7 @@ package com.xesDog.oilField
 			super.initializeView();
 			registerMediator(new MediaContainerMediator(MediaContainerMediator.NAME,new MovieClip()));
 			registerMediator(new LoadingProgressMediator(LoadingProgressMediator.NAME, new MovieClip()));
-			registerMediator(new VideoControlBarMediator(VideoControlBarMediator.NAME, new UIVideoControlBar()));
+//			registerMediator(new VideoControlBarMediator(VideoControlBarMediator.NAME, new UIVideoControlBar()));
 		}
 		/* public function */
 		public function setUp(contextView:DisplayObjectContainer):void {
@@ -120,9 +120,9 @@ package com.xesDog.oilField
 			ResizeManager.instance.addResizeObj(mediaContainer);
 			
 			//视频控制条
-			var videoControlBar:UIVideoControlBar = retrieveMediator(VideoControlBarMediator.NAME).getViewComponent() as UIVideoControlBar;
-			content_mc.addChild(videoControlBar);
-			ResizeManager.instance.addResizeObj(videoControlBar);
+//			var videoControlBar:UIVideoControlBar = retrieveMediator(VideoControlBarMediator.NAME).getViewComponent() as UIVideoControlBar;
+//			content_mc.addChild(videoControlBar);
+//			ResizeManager.instance.addResizeObj(videoControlBar);
 			
 			//进度条容器，进度条在所有对象的最上层
 			var loadingProgressMediator:LoadingProgressMediator = retrieveMediator(LoadingProgressMediator.NAME) as LoadingProgressMediator;

@@ -3,10 +3,11 @@ package com.xesDog.oilField.controller
 	
 	import com.greensock.TweenLite;
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
+	
 	import flash.display.Sprite;
+	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
-	import org.puremvc.as3.patterns.observer.Notification;
 	
 	/**
 	 * @描述
