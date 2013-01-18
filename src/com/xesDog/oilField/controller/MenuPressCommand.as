@@ -7,6 +7,7 @@ package com.xesDog.oilField.controller
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
+	import com.xueersi.corelibs.utils.ParseUrl;
 	
 	import flash.display.MovieClip;
 	
@@ -56,19 +57,19 @@ package com.xesDog.oilField.controller
 				mediaContainer.removeChildren(0);
 				
 				//播放flash
-				if (parseUrlExpandedName(node.val.url) == "swf") {
+				if (ParseUrl.parseUrlExpandedName(node.val.url) == "swf") {
 					sendNotification(EventConst.SYS_LOAD_SWF, node);
 				}
 				//加载视频
-				else if(parseUrlExpandedName(node.val.url) == "flv" ||
-				parseUrlExpandedName(node.val.url) == "mp4" ||
-				parseUrlExpandedName(node.val.url) == "f4v"){
+				else if(ParseUrl.parseUrlExpandedName(node.val.url) == "flv" ||
+					ParseUrl.parseUrlExpandedName(node.val.url) == "mp4" ||
+					ParseUrl.parseUrlExpandedName(node.val.url) == "f4v"){
 					sendNotification(EventConst.SYS_LOAD_VIDEO, node);
 				}
 				//加载图片
-				else if (parseUrlExpandedName(node.val.url) == "jpg" ||
-				parseUrlExpandedName(node.val.url) == "png" ||
-				parseUrlExpandedName(node.val.url) == "gif"){
+				else if (ParseUrl.parseUrlExpandedName(node.val.url) == "jpg" ||
+					ParseUrl.parseUrlExpandedName(node.val.url) == "png" ||
+					ParseUrl.parseUrlExpandedName(node.val.url) == "gif"){
 					sendNotification(EventConst.SYS_LOAD_IMAGE, node);
 				}else {
 					sendNotification(EventConst.SYS_COLOR,node);
@@ -81,17 +82,6 @@ package com.xesDog.oilField.controller
 			}
 		}
 		/* private function */
-		/**
-		 * 获取url的扩展名
-		 * @param	url
-		 * @return
-		 */
-		private function parseUrlExpandedName(url:String):String {
-			var expendName:String = "";
-			var index:int = url.lastIndexOf(".");
-			expendName = url.slice(index + 1);
-			return expendName;
-		}
 		/**
 		 * 删除页面中心的大按钮
 		 */

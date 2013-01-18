@@ -55,7 +55,6 @@ package com.xesDog.oilField.mediator
 			{
 				//加载的时候显示进度条
 				case EventConst.SYS_LOAD_SWF:
-				case EventConst.SYS_LOAD_VIDEO:
 				case EventConst.SYS_LOAD_IMAGE:
 					viewComponent.addChild(_progressBar);
 				break;
@@ -65,6 +64,7 @@ package com.xesDog.oilField.mediator
 				//加载完成，进度条消失
 				case EventConst.SYS_LOADED:
 				case EventConst.SYS_COLOR:
+				case EventConst.SYS_LOAD_VIDEO:
 					if(_progressBar.parent)viewComponent.removeChild(_progressBar);
 				break;
 				default:

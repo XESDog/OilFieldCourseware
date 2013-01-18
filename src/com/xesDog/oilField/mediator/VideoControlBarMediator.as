@@ -104,7 +104,6 @@ package com.xesDog.oilField.mediator
 				_videoLoader.playVideo();
 				btn.gotoAndStop(2);
 			}
-			trace("当前time:" + _videoLoader.videoTime,"总时间："+_videoLoader.duration);
 		}
 		private function setPlayBtnPlay():void {
 			UIVideoControlBar(viewComponent).playBtn.gotoAndStop(1);
@@ -115,7 +114,6 @@ package com.xesDog.oilField.mediator
 		private function onSliderChanged(e:Event):void 
 		{
 			_videoLoader.gotoVideoTime(e.target.value);
-			trace("slider value:"+e.target.value);
 		}
 		private function addEvent():void {
 			viewComponent.addEventListener(Event.ENTER_FRAME, onEnterFrame);

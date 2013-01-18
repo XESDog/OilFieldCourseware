@@ -1,6 +1,11 @@
 package com.xesDog.oilField.model 
 {
 	
+	import com.xueersi.corelibs.utils.ParseUrl;
+	
+	import de.polygonal.ds.DLL;
+	import de.polygonal.ds.DLLNode;
+	
 	import org.puremvc.as3.patterns.proxy.Proxy;
 	
 	/**
@@ -20,19 +25,61 @@ package com.xesDog.oilField.model
 		 */
 		public var currentPressNode:MenuNode;
 		
+		//nodeDll(MenuNode,MenuNode....)
+		private var _nodeDll:DLL=new DLL();
+		private var _videoDll:DLL=new DLL();
+		
 		public static const NAME:String = "menu_proxy";
 		public function MenuProxy(proxyName:String=null, data:Object=null) 
 		{
 			super(proxyName, data);
 		}
 		/* public function */
+
+		public function get nodeList():DLL
+		{
+			return _nodeDll;
+		}
+
+		public function get videoList():DLL
+		{
+			return _videoDll;
+		}
+		/**
+		 * 从dll中找出上一个menuNode 
+		 * @param menuNode
+		 * @param dll
+		 * @return 
+		 * 
+		 */
+		public function getPreMenuNode(menuNode:MenuNode,dll:DLL):MenuNode{
+			var dllNode:DLLNode=dll.nodeOf(menuNode);
+			return dllNode.prev?dllNode.prev.val as MenuNode:null;
+		}
+		/**
+		 * 找出动力两种下一个menuNode 
+		 * @param menuNode
+		 * @param dll
+		 * @return 
+		 * 
+		 */
+		public function getNextMenuNode(menuNode:MenuNode,dll:DLL):MenuNode{
+			var dllNode:DLLNode=dll.nodeOf(menuNode);
+			return dllNode.next?dllNode.next.val as MenuNode:null;
+		}
+		/**
+		 * 整理数据 
+		 * 没有整理之前_nodeList _videoList都为null
+		 */		
+		public function tidyData():void{
+			MenuNode(data).postorder(visitNode,true);
+		}
 		/**
 		 * 该节点是主菜单
 		 * @param	node
 		 * @return
 		 */
 		public function isMainMenu(node:MenuNode):Boolean {
-			//return MenuNode(data).getFirstChild() == node;
 			return node.depth()<=2;
 		}
 		/**
@@ -58,6 +105,23 @@ package com.xesDog.oilField.model
 		/* override function */
 		
 		/* private function */
+		/**
+		 * 遍历树，找出所有叶节点，所有视频节点 
+		 * @param node
+		 * @param userData
+		 * @return 
+		 * 
+		 */		
+		private function visitNode(node:MenuNode,userData:Object):Boolean{
+			if(node.isLeaf()){
+				_nodeDll.append(node);
+				if((ParseUrl.parseUrlExpandedName(node.val.url)=="flv"||
+					ParseUrl.parseUrlExpandedName(node.val.url)=="mp4")){
+					_videoDll.append(node);
+				}
+			}
+			return true;
+		}
 	}
 	
 }

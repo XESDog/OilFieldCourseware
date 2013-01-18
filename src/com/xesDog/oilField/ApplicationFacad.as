@@ -17,15 +17,15 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.mediator.LoadingProgressMediator;
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
 	import com.xesDog.oilField.mediator.SomeMcsMediator;
-	import com.xesDog.oilField.mediator.VideoControlBarMediator;
 	import com.xesDog.oilField.model.ConfigProxy;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
 	import com.xesDog.oilField.model.SoundProxy;
-	import com.xesDog.oilField.ui.UIVideoControlBar;
+	
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
+	
 	import org.puremvc.as3.patterns.facade.Facade;
 	
 	/**

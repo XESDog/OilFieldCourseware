@@ -8,7 +8,6 @@ package com.xesDog.oilField.mediator
 	
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.text.engine.BreakOpportunity;
 	
 	import fl.video.FLVPlayback;
 	

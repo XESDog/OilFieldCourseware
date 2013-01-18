@@ -1,7 +1,6 @@
 package com.xesDog.oilField.controller 
 {
 	
-	import com.xesDog.oilField.events.EventConst;
 	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.manager.XmlManager;
 	import com.xesDog.oilField.mediator.AppMediator;
@@ -12,7 +11,9 @@ package com.xesDog.oilField.controller
 	import com.xesDog.oilField.model.MenuProxy;
 	import com.xesDog.oilField.ui.UIMenu;
 	import com.xesDog.oilField.ui.UIMenuList;
+	
 	import flash.display.Sprite;
+	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
@@ -36,6 +37,8 @@ package com.xesDog.oilField.controller
 			var menuProxy:MenuProxy = facade.retrieveProxy(MenuProxy.NAME) as MenuProxy;
 			var mainMenuNode:MenuNode = node.getFirstChild() as MenuNode;
 			menuProxy.currentRollOverNode = node;
+			menuProxy.tidyData();//整理好数据
+			
 			uiMenu.setMenuName(node.getFirstChild().val.name);
 			facade.registerMediator(new MenuListMediator(node, MenuListMediator.NAME + node.key, uiMenuList));
 			facade.registerMediator(new MenuItemMediator(mainMenuNode, MenuItemMediator.NAME + node.key, uiMenu));
