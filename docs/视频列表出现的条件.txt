@@ -1,0 +1,1 @@
+在menu.xml node中添加一项 isVideolist，如果为true,获取该node对象下的所有video子对象，根据生成的dll显示视频列表

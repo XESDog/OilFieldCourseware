@@ -2,9 +2,10 @@ package com.xesDog.oilField.mediator
 {
 	
 	import com.greensock.TweenLite;
-	import com.xesDog.oilField.events.EventConst;
+	
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
+	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	

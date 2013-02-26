@@ -14,6 +14,11 @@ package com.xesDog.oilField.controller
 	
 	import flash.display.Sprite;
 	
+<<<<<<< HEAD
+=======
+	import de.polygonal.ds.DLL;
+	
+>>>>>>> 增加videolist控制
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	

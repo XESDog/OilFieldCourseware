@@ -1,5 +1,6 @@
 package com.xesDog.oilField
 {
+	import com.xesDog.oilField.controller.AssignVideoListCommand;
 	import com.xesDog.oilField.controller.InitMenuCommand;
 	import com.xesDog.oilField.controller.LoadingColorCommand;
 	import com.xesDog.oilField.controller.LoadingIMAGECommand;
@@ -17,6 +18,10 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.mediator.LoadingProgressMediator;
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
 	import com.xesDog.oilField.mediator.SomeMcsMediator;
+<<<<<<< HEAD
+=======
+	import com.xesDog.oilField.mediator.VideoListMediator;
+>>>>>>> 增加videolist控制
 	import com.xesDog.oilField.model.ConfigProxy;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuNode;
@@ -26,7 +31,11 @@ package com.xesDog.oilField
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
 	
+<<<<<<< HEAD
 	import org.puremvc.as3.patterns.facade.Facade;
+=======
+	import org.puremvc.as3.patterns.facade.Facade;
+>>>>>>> 增加videolist控制
 	
 	/**
 	 * 
@@ -94,6 +103,7 @@ package com.xesDog.oilField
 			registerCommand(EventConst.SYS_LOAD_IMAGE, LoadingIMAGECommand);
 			registerCommand(EventConst.SYS_COLOR, LoadingColorCommand);
 			registerCommand(EventConst.OPERATER_SHOWANDHIDE_MENU, ShowAndHideMenuCommand);
+			registerCommand(EventConst.ASSIGN_VIDEO_LIST,AssignVideoListCommand);
 		}
 		override protected function initializeView():void 
 		{
@@ -101,6 +111,7 @@ package com.xesDog.oilField
 			registerMediator(new MediaContainerMediator(MediaContainerMediator.NAME,new MovieClip()));
 			registerMediator(new LoadingProgressMediator(LoadingProgressMediator.NAME, new MovieClip()));
 //			registerMediator(new VideoControlBarMediator(VideoControlBarMediator.NAME, new UIVideoControlBar()));
+			registerMediator(new VideoListMediator(VideoListMediator.NAME,new MovieClip()));
 		}
 		/* public function */
 		public function setUp(contextView:DisplayObjectContainer):void {
@@ -119,6 +130,12 @@ package com.xesDog.oilField
 			content_mc.addChild(mediaContainer);
 			ResizeManager.instance.addResizeObj(mediaContainer);
 			
+			
+			//视频列表
+			var videolistMediator:VideoListMediator=retrieveMediator(VideoListMediator.NAME) as VideoListMediator;
+			var videolistContainer:MovieClip=videolistMediator.getViewComponent() as MovieClip;
+			_mainMc.addChild(videolistContainer);
+			ResizeManager.instance.addResizeObj(videolistContainer);
 			//视频控制条
 //			var videoControlBar:UIVideoControlBar = retrieveMediator(VideoControlBarMediator.NAME).getViewComponent() as UIVideoControlBar;
 //			content_mc.addChild(videoControlBar);

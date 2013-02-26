@@ -4,11 +4,11 @@ package com.xesDog.oilField.manager
 	import com.xesDog.oilField.model.ConfigProxy;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuNodeVo;
+	
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
-	import mx.events.Request;
 	/**
 	 * 
 	 * 单例模式类

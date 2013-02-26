@@ -2,10 +2,8 @@ package com.xesDog.oilField.ui
 {
 	
 	import com.bit101.components.HSlider;
-	import com.bit101.components.PushButton;
+	
 	import flash.display.MovieClip;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
 	
 	/**
 	 * @描述		视频控制条

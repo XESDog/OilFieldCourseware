@@ -35,6 +35,9 @@ package com.xesDog.oilField.events
 		//视频初始化
 		static public const SYS_INIT_VIDEO:String = "sysInitVideo";
 		
+		//给videolist赋值
+		static public const ASSIGN_VIDEO_LIST:String="assign_video_list";
+		
 		
 	}
 	

@@ -4,14 +4,10 @@ package com.xesDog.oilField.model
 	import com.greensock.events.LoaderEvent;
 	import com.greensock.loading.LoaderMax;
 	import com.greensock.loading.MP3Loader;
-	import com.greensock.loading.data.MP3LoaderVars;
 	
-	import flash.events.DataEvent;
 	import flash.events.Event;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
-	
-	import adobe.utils.ProductManager;
 	
 	import org.puremvc.as3.patterns.proxy.Proxy;
 	

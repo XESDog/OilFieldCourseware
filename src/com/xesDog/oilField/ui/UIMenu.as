@@ -2,8 +2,8 @@ package com.xesDog.oilField.ui
 {
 	
 	import com.bit101.components.PushButton;
+	
 	import flash.display.Sprite;
-	import flash.events.MouseEvent;
 	
 	/**
 	 * @describe  	...

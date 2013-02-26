@@ -1,12 +1,18 @@
 package com.xesDog.oilField.model 
 {
 	
+<<<<<<< HEAD
 	import com.xueersi.corelibs.utils.ParseUrl;
 	
 	import de.polygonal.ds.DLL;
 	import de.polygonal.ds.DLLNode;
 	
 	import org.puremvc.as3.patterns.proxy.Proxy;
+=======
+	import de.polygonal.ds.DLL;
+	
+	import org.puremvc.as3.patterns.proxy.Proxy;
+>>>>>>> 增加videolist控制
 	
 	/**
 	 * @describe  	...
@@ -102,9 +108,21 @@ package com.xesDog.oilField.model
 			
 			return -1;
 		}
+		/**
+		 * 根据node获取该node下所有叶节点，并将他们存储成dll 
+		 * @param node
+		 * @return 
+		 * 
+		 */		
+		public function getLeafNodesBy(node:MenuNode):DLL{
+			var dll:DLL=new DLL();
+			node.preorder(process,false,false,dll);
+			return dll;
+		}
 		/* override function */
 		
 		/* private function */
+<<<<<<< HEAD
 		/**
 		 * 遍历树，找出所有叶节点，所有视频节点 
 		 * @param node
@@ -119,6 +137,11 @@ package com.xesDog.oilField.model
 					ParseUrl.parseUrlExpandedName(node.val.url)=="mp4")){
 					_videoDll.append(node);
 				}
+=======
+		private function process(node:MenuNode,preflight:Boolean,dll:DLL):Boolean{
+			if(node.isLeaf()){
+				dll.append(node.val);
+>>>>>>> 增加videolist控制
 			}
 			return true;
 		}
