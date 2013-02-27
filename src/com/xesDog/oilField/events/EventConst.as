@@ -29,15 +29,25 @@ package com.xesDog.oilField.events
 		public static const SYS_LOADED:String = "sys_loaded";
 		//出错
 		static public const SYS_ERROR:String = "sys_sError";
-		//控制菜单的隐藏和显示
-		static public const OPERATER_SHOWANDHIDE_MENU:String = "operater_Show_and_hide_Menu";
 		
 		//视频初始化
 		static public const SYS_INIT_VIDEO:String = "sysInitVideo";
 		
 		//给videolist赋值
-		static public const ASSIGN_VIDEO_LIST:String="assign_video_list";
+		static public const ASSIGN_VIDEO_LIST:String = "assign_video_list";
+		//清除videolist
+		static public const CLEAR_VIDEO_LIST:String = "clear_video_list";
 		
+		//显示，隐藏动画控制
+		static public const HIDE_ANIMAL_CONTROL:String = "hideAnimalControl";
+		
+		
+		static public const SHOW_ANIMAL_CONTROL:String = "showAnimalControl";
+		
+		//移除菜单list
+		static public const REMOVE_MENU_LIST:String = "removeMenuList";
+		//显示菜单list
+		static public const SHOW_MENU_LIST:String = "showMenuList";
 		
 	}
 	

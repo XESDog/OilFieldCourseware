@@ -4,6 +4,7 @@ package com.xesDog.oilField.mediator
 	import com.bit101.components.PushButton;
 	import com.xesDog.oilField.ApplicationFacad;
 	import com.xesDog.oilField.events.EventConst;
+	import com.xesDog.oilField.manager.XmlManager;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
 	import flash.events.MouseEvent;
@@ -74,11 +75,11 @@ package com.xesDog.oilField.mediator
 						continue;
 					}
 					if(listMediator.inStage){
-						sendNotification(EventConst.OPERATER_SHOWANDHIDE_MENU, node );
+						sendNotification(EventConst.REMOVE_MENU_LIST, node );
 					}
 					node = node.next as MenuNode;
 				}
-				
+				menuProxy.currentRollOverNode = XmlManager.instance.menuNode;
 			}
 		}
 	}

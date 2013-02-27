@@ -1,18 +1,13 @@
 package com.xesDog.oilField.model 
 {
 	
-<<<<<<< HEAD
 	import com.xueersi.corelibs.utils.ParseUrl;
-	
 	import de.polygonal.ds.DLL;
 	import de.polygonal.ds.DLLNode;
-	
 	import org.puremvc.as3.patterns.proxy.Proxy;
-=======
-	import de.polygonal.ds.DLL;
 	
-	import org.puremvc.as3.patterns.proxy.Proxy;
->>>>>>> 增加videolist控制
+	
+	
 	
 	/**
 	 * @describe  	...
@@ -29,7 +24,7 @@ package com.xesDog.oilField.model
 		/**
 		 * 当前点击的node
 		 */
-		public var currentPressNode:MenuNode;
+		//public var currentPressNode:MenuNode;
 		
 		//nodeDll(MenuNode,MenuNode....)
 		private var _nodeDll:DLL=new DLL();
@@ -50,6 +45,62 @@ package com.xesDog.oilField.model
 		public function get videoList():DLL
 		{
 			return _videoDll;
+		}
+		/**
+		 * 获该node的主菜单
+		 * @param	node
+		 * @return
+		 */
+		public function getMainNodeBy(node:MenuNode):MenuNode {
+			if (node == null) return null;
+			while (node) 
+			{
+				if (isMainMenu(node)) {
+					return node;
+				}
+				node = node.parent as MenuNode;
+			}
+			return null;
+		}
+		/**
+		 * 获取理论篇节点
+		 * @return
+		 */
+		public function getTheoryNode():MenuNode {
+			
+			var node:MenuNode=	MenuNode(data).getFirstChild().getFirstChild() as MenuNode;
+			return node;
+		}
+		
+		public function hetFaultNode():MenuNode 
+		{
+			
+			var node:MenuNode =	MenuNode(data).getFirstChild().getFirstChild() as MenuNode;
+			node = node.next as MenuNode;
+			return node;
+		}
+		public function getOperateNode():MenuNode 
+		{
+			var node:MenuNode =	MenuNode(data).getFirstChild().getFirstChild() as MenuNode;
+			node = node.next.next as MenuNode;
+			return node;
+		}
+
+		/**
+		 * 获取第一个子节点
+		 * @param	node
+		 * @return
+		 */
+		public function getFirstNode(node:MenuNode):MenuNode {
+			while (node) 
+			{
+				if (node.isLeaf()) {
+					
+					return node;
+				}
+				node=node.getFirstChild() as MenuNode;
+			}
+			return null;
 		}
 		/**
 		 * 从dll中找出上一个menuNode 
@@ -119,10 +170,11 @@ package com.xesDog.oilField.model
 			node.preorder(process,false,false,dll);
 			return dll;
 		}
+		
+		
 		/* override function */
 		
 		/* private function */
-<<<<<<< HEAD
 		/**
 		 * 遍历树，找出所有叶节点，所有视频节点 
 		 * @param node
@@ -137,11 +189,12 @@ package com.xesDog.oilField.model
 					ParseUrl.parseUrlExpandedName(node.val.url)=="mp4")){
 					_videoDll.append(node);
 				}
-=======
+			}
+			return true;
+		}
 		private function process(node:MenuNode,preflight:Boolean,dll:DLL):Boolean{
 			if(node.isLeaf()){
-				dll.append(node.val);
->>>>>>> 增加videolist控制
+				dll.append(node);
 			}
 			return true;
 		}

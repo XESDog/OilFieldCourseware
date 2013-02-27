@@ -35,14 +35,14 @@ package com.xesDog.oilField.mediator
 		override public function onRegister():void 
 		{
 			super.onRegister();
-			viewComponent.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			viewComponent.addEventListener(MouseEvent.CLICK, onMouseDown);
 			viewComponent.addEventListener(MouseEvent.ROLL_OVER, onMouseRollOver);
 			viewComponent.addEventListener(MouseEvent.ROLL_OUT, onMouseRollOut);
 		}
 		override public function onRemove():void 
 		{
 			super.onRemove();
-			viewComponent.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			viewComponent.removeEventListener(MouseEvent.CLICK, onMouseDown);
 			viewComponent.removeEventListener(MouseEvent.ROLL_OVER, onMouseRollOver);
 			viewComponent.removeEventListener(MouseEvent.ROLL_OUT, onMouseRollOut);
 		}
@@ -60,7 +60,6 @@ package com.xesDog.oilField.mediator
 		/* private function */
 		private function onMouseDown(e:MouseEvent):void 
 		{
-			trace("点击:" + _menuNode.val.name);
 			sendNotification(EventConst.OPERATE_MENU_PRESS, _menuNode);
 			_soundProxy.playPress();
 		}

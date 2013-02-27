@@ -1,60 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!---- 菜单 -->
 <menu name="主菜单">
-	<menu name="菜单1">
-		<menu name="课件1" url="">
-			<menu name="课件1_1" url="">
-				<menu name="课件AAAAAAAAAAAAAAAAAA1_1_1" url="../assets/swf/test.swf"></menu>
-			</menu>
-		</menu>
-		<menu name="课件2" url="">
-			<menu name="课件2_1" url="">
-				<menu name="课件2_1_1" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv"></menu>
-			</menu>
-		</menu>
-		<menu name="课件3">
-			<menu name="课件3_1"></menu>
-		</menu>
-		<menu name="课件4">
-			<menu name="课件4_1" url="../assets/image/Lighthouse.jpg"></menu>
-		</menu>
-		<menu name="课件5">
-			<menu name="课件5_1"></menu>
-		</menu>
-		<menu name="课件6">
-			<menu name="课件6_1"></menu>
-		</menu>
-		<menu name="课件7">
-			<menu name="课件7_1"></menu>
-		</menu>
-		<menu name="课件8">
-			<menu name="课件8_1"></menu>
-		</menu>
-		<menu name="课件9">
-			<menu name="课件9_1"></menu>
-			<menu name="课件9_2"></menu>
-			<menu name="课件9_3"></menu>
-			<menu name="课件9_4"></menu>
-			<menu name="课件9_5"></menu>
-			<menu name="课件9_6"></menu>
-			<menu name="课件9_7"></menu>
-			<menu name="课件9_8"></menu>
-		</menu>
-		<menu name="课件10">
-			<menu name="课件10_1"></menu>
-			<menu name="课件10_2"></menu>
-			<menu name="课件10_3"></menu>
-			<menu name="课件10_4"></menu>
-			<menu name="课件10_5"></menu>
-			<menu name="课件10_6"></menu>
-			<menu name="课件10_7"></menu>
-			
-		</menu>
+	<menu name="理论篇">
+		<menu name="课件1_1_1" url="../assets/swf/test.swf"></menu>
+		<menu name="课件1_1_2" url="../assets/swf/test2.swf"></menu>
+		<menu name="课件1_1_3" url="../assets/swf/test3.swf"></menu>
+		<menu name="课件1_1_4" url="../assets/swf/test.swf"></menu>
+		<menu name="课件1_1_5" url="../assets/swf/test.swf"></menu>
+		<menu name="课件1_1_6" url="../assets/swf/test.swf"></menu>
+		<menu name="课件1_1_7" url="../assets/swf/test.swf"></menu>
+		<menu name="课件1_1_8" url="../assets/swf/test.swf"></menu>
 	</menu>
-	<menu name="菜单2">
-		<menu name="菜单2——课件1"></menu>
+	<menu name="操作篇">
+		<menu name="课件2_1_1" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_2" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
 	</menu>
-	<menu name="菜单3">
-		<menu name="菜单3——课件1"></menu>
+	<menu name="故障篇">
+		<menu name="课件4_1" url="../assets/image/Lighthouse.jpg"></menu>
 	</menu>
 </menu>

@@ -2,6 +2,9 @@ package com.xesDog.oilField.mediator
 {
 	
 	import com.greensock.TweenLite;
+	import com.xesDog.oilField.events.EventConst;
+	import com.xesDog.oilField.model.MenuNode;
+	import com.xesDog.oilField.model.MenuProxy;
 	
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
@@ -83,16 +86,25 @@ package com.xesDog.oilField.mediator
 		}
 		private function onMouseDown(e:MouseEvent):void {
 			var mc:MovieClip = e.target as MovieClip;
+			var menuProxy:MenuProxy = facade.retrieveProxy(MenuProxy.NAME) as MenuProxy;
+			var node:MenuNode;
+			
 			switch (mc) 
 			{
 				case _theoryMc:
-					
+					node = menuProxy.getTheoryNode();
+					node = menuProxy.getFirstNode(node);
+					sendNotification(EventConst.OPERATE_MENU_PRESS,node );
 				break;
 				case _faultMc:
-					
+					node = menuProxy.hetFaultNode();
+					node = menuProxy.getFirstNode(node);
+					sendNotification(EventConst.OPERATE_MENU_PRESS,node );
 				break;
 				case _operateMc:
-					
+					node = menuProxy.getOperateNode();
+					node = menuProxy.getFirstNode(node);
+					sendNotification(EventConst.OPERATE_MENU_PRESS,node );
 				break;
 				default:
 			}

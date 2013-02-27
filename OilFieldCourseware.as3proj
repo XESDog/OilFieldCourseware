@@ -6,10 +6,10 @@
     <movie input="" />
     <movie path="bin-debug\OilFieldCourseware.swf" />
     <movie fps="30" />
-    <movie width="800" />
-    <movie height="600" />
+    <movie width="1024" />
+    <movie height="768" />
     <movie version="11" />
-    <movie minorVersion="5" />
+    <movie minorVersion="6" />
     <movie platform="Flash Player" />
     <movie background="#222222" />
     <movie preferredSDK="Flex 4.6.0, AIR 3.5,asc2;4.6.0, 3.5;" />

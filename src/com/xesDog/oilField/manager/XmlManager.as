@@ -112,6 +112,7 @@ package com.xesDog.oilField.manager
 			nodeVo= new MenuNodeVo();
 			nodeVo.name = xml.@name;
 			nodeVo.url = xml.@url;
+			nodeVo.imgUrl = xml.@imgUrl;
 			
 			var size:int = xml.@size;
 			if (size) nodeVo.size = size;

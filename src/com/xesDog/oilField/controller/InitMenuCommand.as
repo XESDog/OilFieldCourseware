@@ -11,16 +11,12 @@ package com.xesDog.oilField.controller
 	import com.xesDog.oilField.model.MenuProxy;
 	import com.xesDog.oilField.ui.UIMenu;
 	import com.xesDog.oilField.ui.UIMenuList;
-	
 	import flash.display.Sprite;
-	
-<<<<<<< HEAD
-=======
-	import de.polygonal.ds.DLL;
-	
->>>>>>> 增加videolist控制
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
+	
+	
+	
 	
 	/**
 	 * @describe  	初始化菜单

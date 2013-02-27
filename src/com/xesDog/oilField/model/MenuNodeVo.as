@@ -9,6 +9,7 @@ package com.xesDog.oilField.model
 	 */
 	public class MenuNodeVo
 	{
+		public function MenuNodeVo(){}
 		/**
 		 * 菜单项名称
 		 */
@@ -21,6 +22,10 @@ package com.xesDog.oilField.model
 		 * 预估大小
 		 */
 		public var size:int = 0;
+		/**
+		 * 缩略图
+		 */
+		public var imgUrl:String="";
 		
 		/* public function */
 		

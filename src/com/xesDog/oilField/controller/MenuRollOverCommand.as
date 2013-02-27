@@ -44,13 +44,46 @@ package com.xesDog.oilField.controller
 			//主菜单不响应roll事件 ，只对press响应
 			/*if (menuProxy.isMainMenu(node)) {
 				return;
+			}*/
+			
+			//sendNotification(EventConst.OPERATER_SHOWANDHIDE_MENU, node);
+			var depthReduce:int = getDepthReduce(node, currNode);
+			
+			if (depthReduce < 0)
+				{
+					var num:int = depthReduce;
+					while (num > 0)
+					{
+						currNode = currNode.parent as MenuNode;
+						num--;
+					}
+					sendNotification(EventConst.REMOVE_MENU_LIST, currNode);
+					sendNotification(EventConst.SHOW_MENU_LIST, node);
+				}
+			if (depthReduce == 0)
+			{
+				sendNotification(EventConst.REMOVE_MENU_LIST, currNode);
+				sendNotification(EventConst.SHOW_MENU_LIST, node);
 			}
-			*/
-			sendNotification(EventConst.OPERATER_SHOWANDHIDE_MENU, node);
+			if (depthReduce > 0)
+			{
+				sendNotification(EventConst.SHOW_MENU_LIST, node);
+			}
+			menuProxy.currentRollOverNode = node;
+			
 		}
 		
 		/* private function */
-		
+		/**
+		 * 获取当前显示的node和当前点击node的深度差值
+		 * @param nodeA	当前显示node
+		 * @param nodeB 当前点击node
+		 * @return
+		 */
+		private function getDepthReduce(nodeA:MenuNode, nodeB:MenuNode):int
+		{
+			return nodeA.depth() - nodeB.depth();
+		}
 	}
 
 }

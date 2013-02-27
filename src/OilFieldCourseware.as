@@ -4,12 +4,12 @@ package
 	import com.xesDog.oilField.ApplicationFacad;
 	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.manager.XmlManager;
-	
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
+	
 	
 	/**
 	 * @describe 一个课件的框架，用来播放视频和swf文件，主要功能
@@ -63,8 +63,8 @@ package
 			
 			ResizeManager.instance.addResizeObj(mc.bg_mc);
 			
-			mc.log_mc.visible = false;
-			mc.bigBtns_mc.visible = false;
+			//mc.log_mc.visible = false;
+			//mc.bigBtns_mc.visible = false;
 			
 			//底部横条
 			mc.bottom_mc.percentX = 0;
@@ -127,6 +127,28 @@ package
 			mc.bigBtns_mc.percentX = .5;
 			mc.bigBtns_mc.percentY = .5;
 			ResizeManager.instance.addResizeObj(mc.bigBtns_mc);
+			
+			//动画控制按钮，左右按钮
+			mc.leftBtn_mc.percentX = 0;
+			mc.leftBtn_mc.percentY = .5;
+			mc.leftBtn_mc.offsetX = 20;
+			//mc.leftBtn_mc.offsetY = 20;
+			ResizeManager.instance.addResizeObj(mc.leftBtn_mc);
+			mc.leftBtn_mc.visible = false;
+			
+			mc.rightBtn_mc.percentX = 1;
+			mc.rightBtn_mc.percentY = .5;
+			mc.rightBtn_mc.offsetX = -20;
+			//mc.rightBtn_mc.offsetY = 20;
+			ResizeManager.instance.addResizeObj(mc.rightBtn_mc);
+			mc.rightBtn_mc.visible = false;
+			
+			//videolist,注册点在右下角
+			mc.videoList_mc.percentX = 1;
+			mc.videoList_mc.percentY = 1;
+			mc.videoList_mc.offsetY = -40;
+			ResizeManager.instance.addResizeObj(mc.videoList_mc);
+			mc.videoList_mc.visible = false;
 		}
 	}
 }

@@ -9,33 +9,28 @@ package com.xesDog.oilField
 	import com.xesDog.oilField.controller.MenuPressCommand;
 	import com.xesDog.oilField.controller.MenuRollOutCommand;
 	import com.xesDog.oilField.controller.MenuRollOverCommand;
-	import com.xesDog.oilField.controller.ShowAndHideMenuCommand;
+	import com.xesDog.oilField.controller.RemoveMenuListCommand;
+	import com.xesDog.oilField.controller.ShowMenuListCommand;
 	import com.xesDog.oilField.events.EventConst;
 	import com.xesDog.oilField.manager.ResizeManager;
 	import com.xesDog.oilField.manager.XmlManager;
+	import com.xesDog.oilField.mediator.AnimalControlMediator;
 	import com.xesDog.oilField.mediator.AppMediator;
 	import com.xesDog.oilField.mediator.BigBtnsMediator;
 	import com.xesDog.oilField.mediator.LoadingProgressMediator;
 	import com.xesDog.oilField.mediator.MediaContainerMediator;
 	import com.xesDog.oilField.mediator.SomeMcsMediator;
-<<<<<<< HEAD
-=======
 	import com.xesDog.oilField.mediator.VideoListMediator;
->>>>>>> 增加videolist控制
 	import com.xesDog.oilField.model.ConfigProxy;
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
 	import com.xesDog.oilField.model.SoundProxy;
-	
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
+	import org.puremvc.as3.patterns.facade.Facade;
 	
-<<<<<<< HEAD
-	import org.puremvc.as3.patterns.facade.Facade;
-=======
-	import org.puremvc.as3.patterns.facade.Facade;
->>>>>>> 增加videolist控制
+	
 	
 	/**
 	 * 
@@ -102,16 +97,17 @@ package com.xesDog.oilField
 			registerCommand(EventConst.SYS_LOAD_VIDEO, LoadingVIDEOCommand);
 			registerCommand(EventConst.SYS_LOAD_IMAGE, LoadingIMAGECommand);
 			registerCommand(EventConst.SYS_COLOR, LoadingColorCommand);
-			registerCommand(EventConst.OPERATER_SHOWANDHIDE_MENU, ShowAndHideMenuCommand);
-			registerCommand(EventConst.ASSIGN_VIDEO_LIST,AssignVideoListCommand);
+			registerCommand(EventConst.ASSIGN_VIDEO_LIST, AssignVideoListCommand);
+			registerCommand(EventConst.REMOVE_MENU_LIST, RemoveMenuListCommand);
+			registerCommand(EventConst.SHOW_MENU_LIST, ShowMenuListCommand);
 		}
 		override protected function initializeView():void 
 		{
 			super.initializeView();
-			registerMediator(new MediaContainerMediator(MediaContainerMediator.NAME,new MovieClip()));
+			//registerMediator(new MediaContainerMediator(MediaContainerMediator.NAME,new MovieClip()));
 			registerMediator(new LoadingProgressMediator(LoadingProgressMediator.NAME, new MovieClip()));
 //			registerMediator(new VideoControlBarMediator(VideoControlBarMediator.NAME, new UIVideoControlBar()));
-			registerMediator(new VideoListMediator(VideoListMediator.NAME,new MovieClip()));
+			//registerMediator(new VideoListMediator(VideoListMediator.NAME,new MovieClip()));
 		}
 		/* public function */
 		public function setUp(contextView:DisplayObjectContainer):void {
@@ -124,22 +120,20 @@ package com.xesDog.oilField
 			var bigBtnsMc:MovieClip = _mainMc.bigBtns_mc;
 			registerMediator(new BigBtnsMediator(BigBtnsMediator.NAME, bigBtnsMc));
 			
-			var content_mc:MovieClip = _mainMc.content_mc;
+			
+			
 			//媒体容器
-			var mediaContainer:MovieClip = retrieveMediator(MediaContainerMediator.NAME).getViewComponent() as MovieClip;
-			content_mc.addChild(mediaContainer);
-			ResizeManager.instance.addResizeObj(mediaContainer);
+			var content_mc:MovieClip = _mainMc.content_mc;
+			registerMediator(new MediaContainerMediator(MediaContainerMediator.NAME,content_mc));
 			
 			
 			//视频列表
-			var videolistMediator:VideoListMediator=retrieveMediator(VideoListMediator.NAME) as VideoListMediator;
-			var videolistContainer:MovieClip=videolistMediator.getViewComponent() as MovieClip;
-			_mainMc.addChild(videolistContainer);
-			ResizeManager.instance.addResizeObj(videolistContainer);
-			//视频控制条
-//			var videoControlBar:UIVideoControlBar = retrieveMediator(VideoControlBarMediator.NAME).getViewComponent() as UIVideoControlBar;
-//			content_mc.addChild(videoControlBar);
-//			ResizeManager.instance.addResizeObj(videoControlBar);
+			var videoList_mc:MovieClip = _mainMc.videoList_mc;
+			registerMediator(new VideoListMediator(VideoListMediator.NAME, videoList_mc));
+			
+			//动画控制，左右按钮
+			registerMediator(new AnimalControlMediator(AnimalControlMediator.NAME, _mainMc));
+			
 			
 			//进度条容器，进度条在所有对象的最上层
 			var loadingProgressMediator:LoadingProgressMediator = retrieveMediator(LoadingProgressMediator.NAME) as LoadingProgressMediator;
