@@ -106,7 +106,7 @@ package com.xesDog.oilField.mediator
 		
 		public function setVideoUrl(url:String):void{
 			_video.source=url;
-			_video.skin="MinimaFlatCustomColorPlayBackSeekCounterVolMute.swf";
+			_video.skin="MinimaFlatCustomColorAll.swf";
 		}
 		public function unLoadVideo():void{
 			_video.stop();

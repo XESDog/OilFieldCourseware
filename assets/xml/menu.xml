@@ -12,23 +12,33 @@
 		<menu name="课件1_1_8" url="../assets/swf/test.swf"></menu>
 	</menu>
 	<menu name="操作篇">
-		<menu name="课件2_1_1" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_2" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
-		<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		<menu name="第一类">
+			<menu name="课件2_1_1" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+			<menu name="课件2_1_2" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+			<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+			<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		</menu>
+		
+		<menu name="第二类">
+			<menu name="课件2_1_1" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+			<menu name="课件2_1_2" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+			<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+			<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		</menu>
+		
+		<menu name="第三类">
+			<menu name="课件2_1_1" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+			<menu name="课件2_1_2" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+			<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+			<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		</menu>
+		
+		<menu name="第四类">
+			<menu name="课件2_1_1" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+			<menu name="课件2_1_2" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+			<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+			<menu name="课件2_1_3" url="http://xiaxien.gotoip2.com/html5_test/video/ABC.flv" imgUrl="../assets/image/head.jpg"></menu>
+		</menu>
 	</menu>
 	<menu name="故障篇">
 		<menu name="课件4_1" url="../assets/image/Lighthouse.jpg"></menu>

@@ -9,6 +9,7 @@ package com.xesDog.oilField.mediator
 	import fl.controls.TileList;
 	import fl.data.DataProvider;
 	import fl.events.ListEvent;
+	import flash.text.TextField;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
@@ -23,6 +24,7 @@ package com.xesDog.oilField.mediator
 	{
 		private var _tile:TileList;
 		private var _dp:DataProvider;
+		private var _title:TextField;
 		
 		public static const NAME:String="videolist_mediator";
 		public function VideoListMediator(mediatorName:String=null, viewComponent:Object=null)
@@ -35,6 +37,8 @@ package com.xesDog.oilField.mediator
 			_tile = viewComponent.tile;
 			_dp = new DataProvider();
 			
+			_title = viewComponent.title;
+			
 			//_tile.setStyle('cellRenderer', CellRenderer); 
 			_tile.addEventListener(ListEvent.ITEM_CLICK, onItemClick);
 			
@@ -45,6 +49,7 @@ package com.xesDog.oilField.mediator
 			viewComponent.container_mc.removeChild(_tile);
 			_tile = null;
 			_dp = null;
+			_title = null;
 			
 		}
 		override public function listNotificationInterests():Array{
@@ -64,7 +69,8 @@ package com.xesDog.oilField.mediator
 					var dll:DLL = menuProxy.getLeafNodesBy(menuNode) as DLL;
 					if (dll.size() <= 1) {
 						return;
-					}else{
+					}else {
+						_title.text = menuNode.val.name;
 						viewComponent.visible = true;
 						viewComponent.alpha = 0;
 						TweenLite.to(viewComponent, .5, { alpha:1 } );
