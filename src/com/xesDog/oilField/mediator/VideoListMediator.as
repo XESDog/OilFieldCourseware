@@ -9,7 +9,12 @@ package com.xesDog.oilField.mediator
 	import fl.controls.TileList;
 	import fl.data.DataProvider;
 	import fl.events.ListEvent;
+	import flash.display.Loader;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.net.URLRequest;
 	import flash.text.TextField;
+	import flash.text.TextFormat;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
@@ -39,7 +44,7 @@ package com.xesDog.oilField.mediator
 			
 			_title = viewComponent.title;
 			
-			//_tile.setStyle('cellRenderer', CellRenderer); 
+			//_tile.setStyle("contentPadding", 5);
 			_tile.addEventListener(ListEvent.ITEM_CLICK, onItemClick);
 			
 			
@@ -71,10 +76,21 @@ package com.xesDog.oilField.mediator
 						return;
 					}else {
 						_title.text = menuNode.val.name;
+						
 						viewComponent.visible = true;
 						viewComponent.alpha = 0;
 						TweenLite.to(viewComponent, .5, { alpha:1 } );
-						addItemsBy(dll);
+						
+						if(menuNode.val.videoDisplay=="icon"){
+							addItemsBy(dll,IconTileItem);
+							_tile.columnWidth = 140;
+							_tile.rowHeight = 120;
+						}
+						if(menuNode.val.videoDisplay=="txt"){
+							_tile.columnWidth = 300;
+							_tile.rowHeight = 50;
+							addItemsBy(dll, TxtTileItem);
+						}
 						_tile.dataProvider = _dp;
 					}
 				break;
@@ -91,20 +107,34 @@ package com.xesDog.oilField.mediator
 
 		
 		/* private function */
-		private function addItemsBy(dll:DLL):void {
+		private function addItemsBy(dll:DLL,className:Class):void {
 			if (dll) {
 				var node:DLLNode = dll.head;
 				while (node) 
 				{
-					addItem(node.val as MenuNode);
+					addItem(node.val as MenuNode,className);
 					node = node.next;
 				}
 			}else {
 				return ;
 			}
 		}
-		private function addItem(menuNode:MenuNode):void {
-			_dp.addItem({label:menuNode.val.name,source:menuNode.val.imgUrl,data:menuNode});
+		private function addItem(menuNode:MenuNode,className:Class):void {
+			var tileItem:* = new className();
+			tileItem.txt.text = menuNode.val.name;
+			
+			//TODO:未做回收
+			if(className ==IconTileItem){
+				var loader:Loader = new Loader();
+				loader.load(new URLRequest(menuNode.val.imgUrl));
+				loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onComplete);
+				function onComplete(e:Event):void {
+					tileItem.container_mc.addChild(loader);
+					loader.width = tileItem.size_mc.width;
+					loader.height = tileItem.size_mc.height;
+				}
+			}
+			_dp.addItem({source:tileItem,data:menuNode});
 		}
 		private function removeItem():void {
 			

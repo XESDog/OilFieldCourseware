@@ -25,7 +25,11 @@ package com.xesDog.oilField.model
 		/**
 		 * 缩略图
 		 */
-		public var imgUrl:String="";
+		public var imgUrl:String = "";
+		/**
+		 * 视频表示方式
+		 */
+		public var videoDisplay:String = "";
 		
 		/* public function */
 		
