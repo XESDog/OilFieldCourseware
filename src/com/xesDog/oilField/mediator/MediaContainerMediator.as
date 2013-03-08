@@ -85,6 +85,7 @@ package com.xesDog.oilField.mediator
 					//video
 					if(loaderProxy.currentLoader is VideoLoader){
 						setVideoPos();
+						setVideoScale();
 					}else{
 						var contentDisplay:ContentDisplay = loaderProxy.currentLoader.content;
 						contentDisplay.fitWidth = viewComponent.stage.stageWidth;
@@ -104,17 +105,27 @@ package com.xesDog.oilField.mediator
 			}
 		}
 		
+		private function setVideoScale():void 
+		{
+			var w:uint = viewComponent.stage.stageWidth - 480;
+			var scale:Number = w / 1080;
+			if (scale<=0||scale>=2)return;
+			_video.width = 1080 * scale;
+			_video.height = 600 * scale;
+		}
+		
 		public function setVideoUrl(url:String):void{
 			_video.source = url;
-			_video.width = 1080;
-			_video.height = 600;
-			_video.skin="MinimaFlatCustomColorAll.swf";
+			_video.skin = "MinimaFlatCustomColorAll.swf";
+			
+			setVideoScale();
 		}
 		public function unLoadVideo():void{
 			_video.stop();
 		}
 		public function setVideoPos():void{
-			_video.x=viewComponent.stage.stageWidth-_video.width>>1;
+			//_video.x=viewComponent.stage.stageWidth-_video.width>>1;
+			_video.x = 160;
 			_video.y=viewComponent.stage.stageHeight-_video.height-40>>1;
 		}
 	}

@@ -4,15 +4,16 @@
 <flex-config>
   <target-player>11.6</target-player>
   <benchmark>false</benchmark>
+  <use-network>false</use-network>
   <static-link-runtime-shared-libraries>true</static-link-runtime-shared-libraries>
   <compiler>
     <define append="true">
       <name>CONFIG::debug</name>
-      <value>false</value>
+      <value>true</value>
     </define>
     <define append="true">
       <name>CONFIG::release</name>
-      <value>true</value>
+      <value>false</value>
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
@@ -31,8 +32,7 @@
       <value>false</value>
     </define>
     <accessible>true</accessible>
-    <omit-trace-statements>true</omit-trace-statements>
-    <verbose-stacktraces>false</verbose-stacktraces>
+    <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
       <path-element>C:\Users\XRS\Documents\GitHub\OilFieldCourseware\src</path-element>
       <path-element>D:\Program Files\FlashDevelop\Library\AS3\classes</path-element>

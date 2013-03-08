@@ -85,13 +85,13 @@ package
 			//播放按钮
 			mc.play_mc.percentX = 1;
 			mc.play_mc.percentY = 1;
-			mc.play_mc.offsetX = -262;
+			mc.play_mc.offsetX = -212;
 			mc.play_mc.offsetY = -30;
 			ResizeManager.instance.addResizeObj(mc.play_mc);
 			
 			mc.transparentPlay_mc.percentX = 1;
 			mc.transparentPlay_mc.percentY = 1;
-			mc.transparentPlay_mc.offsetX = -262;
+			mc.transparentPlay_mc.offsetX = -212;
 			mc.transparentPlay_mc.offsetY = -30;
 			ResizeManager.instance.addResizeObj(mc.transparentPlay_mc);
 			
@@ -103,11 +103,11 @@ package
 			ResizeManager.instance.addResizeObj(mc.sound_mc);
 			
 			//帮助
-			mc.help_mc.percentX = 1;
+		/*	mc.help_mc.percentX = 1;
 			mc.help_mc.percentY = 1;
 			mc.help_mc.offsetX = -218;
 			mc.help_mc.offsetY = -30;
-			ResizeManager.instance.addResizeObj(mc.help_mc);
+			ResizeManager.instance.addResizeObj(mc.help_mc);*/
 			
 			//全屏
 			mc.fullScreen_mc.percentX = 1;

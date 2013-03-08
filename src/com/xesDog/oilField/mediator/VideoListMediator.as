@@ -85,10 +85,14 @@ package com.xesDog.oilField.mediator
 							addItemsBy(dll,IconTileItem);
 							_tile.columnWidth = 140;
 							_tile.rowHeight = 120;
+							_title.visible = true;
+							viewComponent.txtBg.visible = true;
 						}
 						if(menuNode.val.videoDisplay=="txt"){
-							_tile.columnWidth = 300;
-							_tile.rowHeight = 50;
+							_tile.columnWidth = 280;
+							_tile.rowHeight = 68;
+							_title.visible = false;
+							viewComponent.txtBg.visible = false;
 							addItemsBy(dll, TxtTileItem);
 						}
 						_tile.dataProvider = _dp;
