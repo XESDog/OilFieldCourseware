@@ -105,7 +105,9 @@ package com.xesDog.oilField.mediator
 		}
 		
 		public function setVideoUrl(url:String):void{
-			_video.source=url;
+			_video.source = url;
+			_video.width = 1080;
+			_video.height = 600;
 			_video.skin="MinimaFlatCustomColorAll.swf";
 		}
 		public function unLoadVideo():void{

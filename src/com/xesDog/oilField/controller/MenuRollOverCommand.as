@@ -33,6 +33,7 @@ package com.xesDog.oilField.controller
 			var node:MenuNode = notification.getBody() as MenuNode;
 			var menuProxy:MenuProxy = facade.retrieveProxy(MenuProxy.NAME) as MenuProxy;
 			var currNode:MenuNode = menuProxy.currentRollOverNode;
+			menuProxy.currentRollOverNode = node;
 			if (node.isLeaf())
 			{
 				return; //叶节点没有后续菜单
@@ -69,7 +70,6 @@ package com.xesDog.oilField.controller
 			{
 				sendNotification(EventConst.SHOW_MENU_LIST, node);
 			}
-			menuProxy.currentRollOverNode = node;
 			
 		}
 		

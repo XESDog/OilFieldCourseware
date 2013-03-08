@@ -94,8 +94,6 @@ package com.xesDog.oilField.controller
 				}else {
 					sendNotification(EventConst.SYS_COLOR,node);
 				}
-				//menuProxy.currentPressNode = node;
-				
 				//点击叶节点，移除该节点所在的所有菜单
 				sendNotification(EventConst.REMOVE_MENU_LIST, menuProxy.getMainNodeBy(node));
 			}
