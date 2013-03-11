@@ -1,20 +1,20 @@
 package com.xesDog.oilField.mediator
 {
-	import com.greensock.TweenLite;
 	import com.xesDog.oilField.events.EventConst;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
-	import de.polygonal.ds.DLL;
-	import de.polygonal.ds.DLLNode;
-	import fl.controls.TileList;
-	import fl.data.DataProvider;
-	import fl.events.ListEvent;
+	
 	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	import flash.net.URLRequest;
-	import flash.text.TextField;
-	import flash.text.TextFormat;
+	
+	import de.polygonal.ds.DLL;
+	import de.polygonal.ds.DLLNode;
+	
+	import fl.containers.ScrollPane;
+	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
@@ -27,9 +27,14 @@ package com.xesDog.oilField.mediator
 	 */
 	public class VideoListMediator extends Mediator
 	{
-		private var _tile:TileList;
-		private var _dp:DataProvider;
-		private var _title:TextField;
+		private var _scrollPane:ScrollPane;
+		/**
+		 * 当前显示的node
+		 */
+		private var _currNode:MenuNode;
+		
+		//private var _dp:DataProvider;
+		//private var _title:TextField;
 		
 		public static const NAME:String="videolist_mediator";
 		public function VideoListMediator(mediatorName:String=null, viewComponent:Object=null)
@@ -39,22 +44,13 @@ package com.xesDog.oilField.mediator
 		}
 		override public function onRegister():void {
 			
-			_tile = viewComponent.tile;
-			_dp = new DataProvider();
-			
-			_title = viewComponent.title;
-			
-			//_tile.setStyle("contentPadding", 5);
-			_tile.addEventListener(ListEvent.ITEM_CLICK, onItemClick);
+			_scrollPane = viewComponent.scrollPane;
 			
 			
 		}
 		override public function onRemove():void{
 			
-			viewComponent.container_mc.removeChild(_tile);
-			_tile = null;
-			_dp = null;
-			_title = null;
+			//_dp = null;
 			
 		}
 		override public function listNotificationInterests():Array{
@@ -70,40 +66,43 @@ package com.xesDog.oilField.mediator
 			{
 				case EventConst.ASSIGN_VIDEO_LIST:
 					menuNode = body as MenuNode;
+					//menuNode是点击菜单的parent对象，如果menuNode没有videoDisplay属性，像父级查找
+					while (menuNode) {
+						if (menuNode.val.videoDisplay == "") {
+							menuNode = menuNode.parent as MenuNode;
+						}else {
+							break;
+						}
+						
+					}
 					
 					var dll:DLL = menuProxy.getLeafNodesBy(menuNode) as DLL;
 					if (dll.size() <= 1) {
 						return;
 					}else {
-						_title.text = menuNode.val.name;
-						
 						viewComponent.visible = true;
-						viewComponent.alpha = 0;
-						TweenLite.to(viewComponent, .5, { alpha:1 } );
+						
+						
+						if (_currNode == menuNode) {
+							return;
+						}
+						
+						_currNode = menuNode;
+						//viewComponent.alpha = 0;
+						//TweenLite.to(viewComponent, .5, { alpha:1 } );
 						
 						if(menuNode.val.videoDisplay=="icon"){
 							addItemsBy(dll,IconTileItem);
-							_tile.columnWidth = 140;
-							_tile.rowHeight = 120;
-							_title.visible = true;
-							viewComponent.txtBg.visible = true;
 						}
 						if(menuNode.val.videoDisplay=="txt"){
-							_tile.columnWidth = 280;
-							_tile.rowHeight = 68;
-							_title.visible = false;
-							viewComponent.txtBg.visible = false;
 							addItemsBy(dll, TxtTileItem);
 						}
-						_tile.dataProvider = _dp;
 					}
 				break;
 			case EventConst.CLEAR_VIDEO_LIST:
-					_dp=new DataProvider();
-					_tile.dataProvider = new DataProvider();
-					TweenLite.to(viewComponent, .5, { alpha:0, onComplete:function():void {
+					//TweenLite.to(viewComponent, .5, { alpha:0, onComplete:function():void {
 						viewComponent.visible = false;
-					} });
+					//} });
 				break;
 				default:
 			}
@@ -111,34 +110,92 @@ package com.xesDog.oilField.mediator
 
 		
 		/* private function */
+		
 		private function addItemsBy(dll:DLL,className:Class):void {
 			if (dll) {
 				var node:DLLNode = dll.head;
-				while (node) 
-				{
-					addItem(node.val as MenuNode,className);
-					node = node.next;
+				var tileItem:*;
+				var sp:Sprite = new Sprite();
+				var i:uint = 0;
+				var loader:Loader;
+				_scrollPane.source = sp;
+				if (className == IconTileItem) {
+					
+					//同一个父对象的有分隔符区分
+					var parentNode:MenuNode;
+					var ball:Sprite;
+					var span:uint=1;
+					
+					while (node) 
+					{
+						if (parentNode == null) {
+							parentNode = node.val.parent as MenuNode;
+							//创建分隔符
+							ball = addTitle(parentNode);
+							sp.addChild(ball);
+							ball.x = 70;
+							ball.y = _scrollPane.source.height;
+						}else {
+							if (parentNode == node.val.parent) {
+								
+							}
+							//创建分隔符
+							else {
+								span++;
+								parentNode = node.val.parent as MenuNode;
+								ball = addTitle(parentNode);
+								sp.addChild(ball);
+								ball.x = 70;
+								ball.y = _scrollPane.source.height;
+							}
+						}
+						
+						tileItem= new className();
+						tileItem.txt.text = node.val.val.name;
+						
+						loader = new Loader();
+						loader.load(new URLRequest(node.val.val.imgUrl));
+						tileItem.container_mc.addChild(loader);
+						loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onComplete);
+						function onComplete(e:Event):void {
+							loader.contentLoaderInfo.removeEventListener(Event.COMPLETE, onComplete);
+							loader.width = tileItem.size_mc.width;
+							loader.height = tileItem.size_mc.height;
+						}
+						sp.addChild(tileItem);
+						tileItem.x = i % 2 * 140;
+						tileItem.y = int(i / 2) * 107 + 10 + span * 50;
+						
+						tileItem.addEventListener(MouseEvent.MOUSE_DOWN, onItemClick);
+						tileItem.node = node;
+						
+						i++;
+						node = node.next;
+					}
+					
 				}
+				i = 0;
+				if (className==TxtTileItem) {
+					while (node) {
+						tileItem = new className();
+						tileItem.txt.text = node.val.val.name;
+						sp.addChild(tileItem);
+						tileItem.y = i * 60+ 10;
+						
+						tileItem.addEventListener(MouseEvent.MOUSE_DOWN, onItemClick);
+						tileItem.node = node;
+						i++
+						node = node.next;
+					}
+				}
+				_scrollPane.update();
 			}else {
 				return ;
 			}
 		}
-		private function addItem(menuNode:MenuNode,className:Class):void {
-			var tileItem:* = new className();
-			tileItem.txt.text = menuNode.val.name;
-			
-			//TODO:未做回收
-			if(className ==IconTileItem){
-				var loader:Loader = new Loader();
-				loader.load(new URLRequest(menuNode.val.imgUrl));
-				loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onComplete);
-				function onComplete(e:Event):void {
-					tileItem.container_mc.addChild(loader);
-					loader.width = tileItem.size_mc.width;
-					loader.height = tileItem.size_mc.height;
-				}
-			}
-			_dp.addItem({source:tileItem,data:menuNode});
+		private function onItemClick(e:Event):void {
+			var node:MenuNode = e.currentTarget.node.val as MenuNode;
+			sendNotification(EventConst.OPERATE_MENU_PRESS,node);
 		}
 		private function removeItem():void {
 			
@@ -147,10 +204,10 @@ package com.xesDog.oilField.mediator
 			
 		}
 		
-		private function onItemClick(e:ListEvent):void 
-		{
-			sendNotification(EventConst.OPERATE_MENU_PRESS, e.item.data);
+		private function addTitle(menuNode:MenuNode):Sprite {
+			var titleMc:TitleMC = new TitleMC();
+			titleMc.title.text = menuNode.val.name;
+			return titleMc;
 		}
-
 	}
 }

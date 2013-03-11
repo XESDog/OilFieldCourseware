@@ -70,7 +70,7 @@ package com.xesDog.oilField.model
 		public function playBgSound(mp3Loader:MP3Loader):void {
 			_currentBgSound = mp3Loader;
 			mp3Loader.playSound();
-			mp3Loader.volume = .1;
+			mp3Loader.volume = 1;
 			_playState = STATE_PLAY;
 			mp3Loader.addEventListener(MP3Loader.SOUND_COMPLETE, onBgSoundComplete);
 		}

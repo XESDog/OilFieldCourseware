@@ -1,19 +1,23 @@
 package com.xesDog.oilField.mediator 
 {
 	
+	import com.xesDog.oilField.events.EventConst;
 	import com.xesDog.oilField.model.ConfigProxy;
 	import com.xesDog.oilField.model.SoundProxy;
 	import com.xueersi.corelibs.uiCore.ICSBtn;
-	import fl.controls.Slider;
-	import fl.events.SliderEvent;
+	
 	import flash.display.MovieClip;
 	import flash.display.Stage;
 	import flash.display.StageDisplayState;
 	import flash.events.MouseEvent;
 	import flash.media.SoundMixer;
 	import flash.media.SoundTransform;
-	import flash.net.navigateToURL;
 	import flash.net.URLRequest;
+	import flash.net.navigateToURL;
+	
+	import fl.controls.Slider;
+	import fl.events.SliderEvent;
+	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
@@ -82,7 +86,10 @@ package com.xesDog.oilField.mediator
 		
 		private function onFullscreenDown(e:MouseEvent):void 
 		{
+			
 			if (Stage(viewComponent.stage).displayState.indexOf(StageDisplayState.FULL_SCREEN)==-1) {
+				var proxy:ConfigProxy=facade.retrieveProxy(ConfigProxy.NAME) as ConfigProxy;
+				proxy.fullScreenClick=true;
 				Stage(viewComponent.stage).displayState = StageDisplayState.FULL_SCREEN;
 			}else {
 				Stage(viewComponent.stage).displayState = StageDisplayState.NORMAL;

@@ -15,6 +15,7 @@ package com.xesDog.oilField.model
 		
 		public var homePage:String;
 		public var menuSpace:int;
+		public var fullScreenClick:Boolean=false;
 		
 		public function ConfigProxy(proxyName:String=null, data:Object=null) 
 		{

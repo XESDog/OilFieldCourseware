@@ -10,8 +10,8 @@
 		<menu name="课件1_1_6" url="../assets/swf/test6.swf"></menu>
 	</menu>
 	<!-- videoDisplay 表示视频用什么列表展示，icon表示图标，txt表示文字按钮 -->
-	<menu name="操作篇" >
-		<menu name="第一类" videoDisplay="icon">
+	<menu name="操作篇" videoDisplay="icon" >
+		<menu name="第一类">
 			<menu name="课件2_1_1课件2_1_1课件2_1_1课件2_1_1课件2_1_1" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
 			<menu name="课件2_1_2" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
 			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
@@ -32,28 +32,51 @@
 			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
 		</menu>
 		
-		<menu name="第二类" videoDisplay="txt">
+		<menu name="第二类">
 			<menu name="课件2_1_1" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
 			<menu name="课件2_1_2" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
 			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
 			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
 		</menu>
 		
-		<menu name="第三类" videoDisplay="txt">
-			<menu name="课件2_1_1" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
-			<menu name="课件2_1_2" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
-			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
-			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+		<menu name="第三类">
+			<menu name="课件3_1_1" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件3_1_2" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件3_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件3_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
 		</menu>
 		
-		<menu name="第四类" videoDisplay="icon">
-			<menu name="课件2_1_1" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
-			<menu name="课件2_1_2" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
-			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
-			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+		<menu name="第四类">
+			<menu name="课件4_1_1" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件4_1_2" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件4_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件4_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
 		</menu>
 	</menu>
-	<menu name="故障篇">
-		<menu name="课件4_1" url="../assets/image/Lighthouse.jpg"></menu>
+	<menu name="故障篇" videoDisplay="txt">
+		<menu name="故障篇_1_1" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="故障篇_1_2" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="故障篇_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="故障篇_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="故障篇_1_1" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_2" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_1" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_2" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_1" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_2" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_1" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_2" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_1" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_2" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
+			<menu name="课件2_1_3" url="../assets/video/test.flv" imgUrl="../assets/image/head.png"></menu>
 	</menu>
 </menu>

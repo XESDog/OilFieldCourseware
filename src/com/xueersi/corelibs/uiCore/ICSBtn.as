@@ -9,7 +9,7 @@ package com.xueersi.corelibs.uiCore
 	 * @website 	http://blog.sina.com.cn/zihua2007
 	 * @time		2012/7/12 9:50
 	 */
-	public class ICSBtn extends ICSView
+	dynamic public class ICSBtn extends ICSView
 	{
 		/** 按钮的状态 */
 		static protected const State_Up:int=1;
@@ -105,7 +105,6 @@ package com.xueersi.corelibs.uiCore
 		{
 			setMouseEnabled(this, true);
 			gotoAndStop(state);
-			trace(state);
 			switch (state)
 			{
 				case State_Up:

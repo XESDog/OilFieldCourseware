@@ -4,9 +4,11 @@ package com.xesDog.oilField.mediator
 	import com.greensock.loading.VideoLoader;
 	import com.greensock.loading.display.ContentDisplay;
 	import com.xesDog.oilField.events.EventConst;
+	import com.xesDog.oilField.model.ConfigProxy;
 	import com.xesDog.oilField.model.LoaderProxy;
 	
 	import flash.display.Sprite;
+	import flash.display.Stage;
 	import flash.events.Event;
 	
 	import fl.video.FLVPlayback;
@@ -44,11 +46,13 @@ package com.xesDog.oilField.mediator
 		override public function onRegister():void
 		{
 			trace("onRegister");
+			Stage(viewComponent.stage).addEventListener(Event.FULLSCREEN,onFullScreen);;
 		}
 		
 		override public function onRemove():void
 		{
 			super.onRemove();
+			Stage(viewComponent.stage).removeEventListener(Event.FULLSCREEN,onFullScreen);
 		}
 		
 		override public function listNotificationInterests():Array
@@ -104,9 +108,18 @@ package com.xesDog.oilField.mediator
 				//没有显示对象，不做处理
 			}
 		}
-		
+		private function onFullScreen(e:Event):void{
+			var proxy:ConfigProxy=facade.retrieveProxy(ConfigProxy.NAME) as ConfigProxy;
+			if(proxy.fullScreenClick){
+				_video.fullScreenTakeOver=false;
+				proxy.fullScreenClick=false;
+			}else{
+				_video.fullScreenTakeOver=true;
+			}
+		}
 		private function setVideoScale():void 
 		{
+			trace("舞台width:"+viewComponent.stage.stageWidth);
 			var w:uint = viewComponent.stage.stageWidth - 480;
 			var scale:Number = w / 1080;
 			if (scale<=0||scale>=2)return;
@@ -116,13 +129,15 @@ package com.xesDog.oilField.mediator
 		
 		public function setVideoUrl(url:String):void{
 			_video.source = url;
-			_video.skin = "MinimaFlatCustomColorAll.swf";
-			
+			_video.skinBackgroundColor = 0xcccccc;
+			_video.skin = "SkinUnderPlayStopSeekFullVol.swf";
+//			_video.fullScreenTakeOver=false;
 			setVideoScale();
 		}
 		public function unLoadVideo():void{
 			_video.stop();
 		}
+		
 		public function setVideoPos():void{
 			//_video.x=viewComponent.stage.stageWidth-_video.width>>1;
 			_video.x = 160;
