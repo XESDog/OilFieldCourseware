@@ -150,8 +150,10 @@ package com.xesDog.oilField.mediator
 		private function pauseSound():void {
 			_transparentPlayMc.visible = _playMc.selected = !_playMc.selected;
 			
-			var soundProxy:SoundProxy = facade.retrieveProxy(SoundProxy.NAME) as SoundProxy;
-			soundProxy.pauseBgSound();
+			//var soundProxy:SoundProxy = facade.retrieveProxy(SoundProxy.NAME) as SoundProxy;
+			//soundProxy.pauseBgSound();
+			
+			sendNotification(EventConst.PAUSE_AND_PLAY_ANIMAL);
 		}
 	}
 }

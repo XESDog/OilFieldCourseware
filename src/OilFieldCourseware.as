@@ -146,7 +146,8 @@ package
 			//videolist,注册点在右下角
 			mc.videoList_mc.percentX = 1;
 			mc.videoList_mc.percentY = 1;
-			mc.videoList_mc.offsetY = -40;
+			mc.videoList_mc.offsetX = -20;
+			mc.videoList_mc.offsetY = -85;
 			ResizeManager.instance.addResizeObj(mc.videoList_mc);
 			mc.videoList_mc.visible = false;
 		}

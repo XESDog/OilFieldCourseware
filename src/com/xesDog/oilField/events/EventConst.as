@@ -49,6 +49,9 @@ package com.xesDog.oilField.events
 		//显示菜单list
 		static public const SHOW_MENU_LIST:String = "showMenuList";
 		
+		//暂停动画，继续播放动画
+		static public const PAUSE_AND_PLAY_ANIMAL:String = "pause_and_play_animal";
+		
 	}
 	
 }

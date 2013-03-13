@@ -2,12 +2,38 @@
 <!---- 菜单 -->
 <menu name="主菜单">
 	<menu name="理论篇">
-		<menu name="课件1_1_1" url="../assets/swf/test.swf"></menu>
-		<menu name="课件1_1_2" url="../assets/swf/test2.swf"></menu>
-		<menu name="课件1_1_3" url="../assets/swf/test3.swf"></menu>
-		<menu name="课件1_1_4" url="../assets/swf/test4.swf"></menu>
-		<menu name="课件1_1_5" url="../assets/swf/test5.swf"></menu>
-		<menu name="课件1_1_6" url="../assets/swf/test6.swf"></menu>
+		<menu name="泵_0">
+			<menu name="课件1_1_1" url="../assets/swf/test.swf"></menu>
+			<menu name="课件1_1_2" url="../assets/swf/test2.swf"></menu>
+			<menu name="课件1_1_3" url="../assets/swf/test3.swf"></menu>
+			<menu name="课件1_1_4" url="../assets/swf/test4.swf"></menu>
+			<menu name="课件1_1_5" url="../assets/swf/test5.swf"></menu>
+			<menu name="课件1_1_6" url="../assets/swf/test6.swf"></menu>
+		</menu>
+		<menu name="泵_1">
+			<menu name="课件1_2_1" url="../assets/swf/test.swf"></menu>
+			<menu name="课件1_2_2" url="../assets/swf/test2.swf"></menu>
+			<menu name="课件1_2_3" url="../assets/swf/test3.swf"></menu>
+			<menu name="课件1_2_4" url="../assets/swf/test4.swf"></menu>
+			<menu name="课件1_2_5" url="../assets/swf/test5.swf"></menu>
+			<menu name="课件1_2_6" url="../assets/swf/test6.swf"></menu>
+		</menu>
+		<menu name="泵_2">
+			<menu name="课件1_3_1" url="../assets/swf/test.swf"></menu>
+			<menu name="课件1_1_2" url="../assets/swf/test2.swf"></menu>
+			<menu name="课件1_1_3" url="../assets/swf/test3.swf"></menu>
+			<menu name="课件1_1_4" url="../assets/swf/test4.swf"></menu>
+			<menu name="课件1_1_5" url="../assets/swf/test5.swf"></menu>
+			<menu name="课件1_1_6" url="../assets/swf/test6.swf"></menu>
+		</menu>
+		<menu name="泵_3">
+			<menu name="课件1_4_1" url="../assets/swf/test.swf"></menu>
+			<menu name="课件1_1_2" url="../assets/swf/test2.swf"></menu>
+			<menu name="课件1_1_3" url="../assets/swf/test3.swf"></menu>
+			<menu name="课件1_1_4" url="../assets/swf/test4.swf"></menu>
+			<menu name="课件1_1_5" url="../assets/swf/test5.swf"></menu>
+			<menu name="课件1_1_6" url="../assets/swf/test6.swf"></menu>
+		</menu>
 	</menu>
 	<!-- videoDisplay 表示视频用什么列表展示，icon表示图标，txt表示文字按钮 -->
 	<menu name="操作篇" videoDisplay="icon" >

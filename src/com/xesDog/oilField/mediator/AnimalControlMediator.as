@@ -53,7 +53,7 @@ package com.xesDog.oilField.mediator
 		
 		override public function listNotificationInterests():Array 
 		{
-			return [EventConst.SHOW_ANIMAL_CONTROL,EventConst.HIDE_ANIMAL_CONTROL,EventConst.OPERATE_MENU_PRESS];
+			return [EventConst.SHOW_ANIMAL_CONTROL, EventConst.HIDE_ANIMAL_CONTROL, EventConst.OPERATE_MENU_PRESS];
 		}
 		override public function handleNotification(notification:INotification):void 
 		{

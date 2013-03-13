@@ -5,6 +5,7 @@ package com.xesDog.oilField.mediator
 	import com.xesDog.oilField.events.EventConst;
 	import com.xesDog.oilField.model.MenuNode;
 	import com.xesDog.oilField.model.MenuProxy;
+	import de.polygonal.ds.TreeNode;
 	
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
@@ -92,9 +93,15 @@ package com.xesDog.oilField.mediator
 			switch (mc) 
 			{
 				case _theoryMc:
-					node = menuProxy.getTheoryNode();
+					/*node = menuProxy.getTheoryNode();
 					node = menuProxy.getFirstNode(node);
-					sendNotification(EventConst.OPERATE_MENU_PRESS,node );
+					sendNotification(EventConst.OPERATE_MENU_PRESS,node );*/
+					viewComponent.gotoAndStop(2);
+					for (var i:int = 0; i < 4; i++) 
+					{
+						MovieClip(viewComponent["pump_" + i]).addEventListener(MouseEvent.MOUSE_DOWN, onBengDown);
+						MovieClip(viewComponent["pump_" + i]).num = i;
+					}
 				break;
 				case _faultMc:
 					node = menuProxy.hetFaultNode();
@@ -108,6 +115,26 @@ package com.xesDog.oilField.mediator
 				break;
 				default:
 			}
+		}
+		
+		private function onBengDown(e:MouseEvent):void 
+		{
+			var node:TreeNode;
+			var num:uint = MovieClip(e.currentTarget).num;
+			var menuProxy:MenuProxy = facade.retrieveProxy(MenuProxy.NAME) as MenuProxy;
+			var i:uint = 0;
+			node = menuProxy.getTheoryNode();
+			node = node.getFirstChild();
+			while (node) 
+			{
+				if (i == num) {
+					break;
+				}
+				node=node.next;
+				i++;
+			}
+			node = menuProxy.getFirstNode(node as MenuNode);
+			sendNotification(EventConst.OPERATE_MENU_PRESS,node );
 		}
 	}
 	

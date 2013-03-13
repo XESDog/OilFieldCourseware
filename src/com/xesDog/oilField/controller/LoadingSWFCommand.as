@@ -2,6 +2,7 @@ package com.xesDog.oilField.controller
 {
 	
 	import com.greensock.events.LoaderEvent;
+	import com.greensock.loading.display.ContentDisplay;
 	import com.greensock.loading.SWFLoader;
 	import com.greensock.TweenLite;
 	import com.xesDog.oilField.events.EventConst;
@@ -9,7 +10,9 @@ package com.xesDog.oilField.controller
 	import com.xesDog.oilField.model.LoaderProxy;
 	import com.xesDog.oilField.model.MenuNode;
 	import flash.display.DisplayObject;
+	import flash.display.MovieClip;
 	import flash.display.Sprite;
+	import flash.utils.setTimeout;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
@@ -57,9 +60,11 @@ package com.xesDog.oilField.controller
 		private function completeHandler(e:LoaderEvent):void 
 		{
 			trace(e.target + " is complete!");
-			var swf:DisplayObject = e.target.content;
+			var swf:ContentDisplay = e.target.content;
 			swf.alpha = 0;
-			//swf.scaleX = swf.scaleY = .8;
+			//初始化为play，不让isPlaying不正常显示
+			MovieClip(swf.getChildAt(0)).play();
+			
 			TweenLite.to(swf, .5, { alpha:1,scaleX:1,scaleY:1 } );
 			sendNotification(EventConst.SYS_LOADED);
 		}
